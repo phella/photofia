@@ -1,0 +1,81 @@
+
+.signin
+{
+    width: 350px;
+    height: 549px;
+    background-color: white;
+    position: absolute;
+    top:100px;
+    right: 10%;
+    animation-name: slip;
+    animation-duration: 4s;
+}
+
+.logo
+{
+    width: 100px;
+    height: 220px;
+}
+
+
+.btnn{
+    width:100%;
+    margin-bottom: 100px;
+}
+
+@keyframes slip {
+    from {right: -10%;}
+    to {right: 10%;}
+}
+
+i {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+aa 
+{
+    color:blue;
+}
+
+  .form-control{
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.glitch {
+    position: absolute;
+    background-image: url("../../assets/images/create.jpg");
+    height: 100%;
+    width: 100%;
+  }
+  .glitch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../../assets/images/create.jpg");
+    opacity: .5;
+    animation: animate 3s linear infinite;
+    mix-blend-mode: hard-light;
+  }
+
+  @keyframes animate
+{
+    0%,70%
+    {
+        background-position: 0 0 ;
+        filter: hue-rotate(0);
+    }
+    80%
+    {
+        background-position: 10px 0;
+        
+    }
+    90%
+    {
+        background-position: -5px 0px;
+        filter: hue-rotate(360deg);
+    }
+}

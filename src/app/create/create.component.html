@@ -1,0 +1,108 @@
+<div class="back">
+    <div class="set">
+        <div ><img src="../../assets/images/leaves1.png"></div>
+        <div ><img src="../../assets/images/leaves2.png"></div>
+        <div ><img src="../../assets/images/leaves3.png"></div>
+        <div ><img src="../../assets/images/leaves4.png"></div>
+        <div ><img src="../../assets/images/leaves1.png"></div>
+        <div ><img src="../../assets/images/leaves2.png"></div>
+        <div ><img src="../../assets/images/leaves3.png"></div>
+        <div ><img src="../../assets/images/leaves4.png"></div>
+    </div>
+    <div class="set set2">
+            <div ><img src="../../assets/images/leaves1.png"></div>
+            <div ><img src="../../assets/images/leaves2.png"></div>
+            <div ><img src="../../assets/images/leaves3.png"></div>
+            <div ><img src="../../assets/images/leaves4.png"></div>
+            <div ><img src="../../assets/images/leaves1.png"></div>
+            <div ><img src="../../assets/images/leaves2.png"></div>
+            <div ><img src="../../assets/images/leaves3.png"></div>
+            <div ><img src="../../assets/images/leaves4.png"></div>
+    </div>
+    <div class="set set3">
+            <div ><img src="../../assets/images/leaves1.png"></div>
+            <div ><img src="../../assets/images/leaves2.png"></div>
+            <div ><img src="../../assets/images/leaves3.png"></div>
+            <div ><img src="../../assets/images/leaves4.png"></div>
+            <div ><img src="../../assets/images/leaves1.png"></div>
+            <div ><img src="../../assets/images/leaves2.png"></div>
+            <div ><img src="../../assets/images/leaves3.png"></div>
+            <div ><img src="../../assets/images/leaves4.png"></div>
+    </div>
+</div>
+   <div class="container main">
+       <form #form="ngForm" (submit)="submitForm(form)" novalidate >
+            <div class="container">
+                <div class="row">
+                    <div class=" col-lg-4 ">
+                        <input #firstName="ngModel" type="text" class="form-control" placeholder="First name" name="firstName" required [(ngModel)]="model.firstname">
+                    </div>
+                    <div class=" col-lg-4 ">
+                        <input #lastName="ngModel" type="text" class="form-control" name="lastName" placeholder="Last name"  required [(ngModel)]="model.lastname">
+                    </div>
+                </div>
+                    <div *ngIf="firstName.invalid && firstName.dirty" class="alert alert-danger col-lg-4">
+                      First name is required.
+                    </div>
+
+                    <div *ngIf="lastName.invalid && lastName.dirty && firstName.valid" class="alert alert-danger col-lg-4 offset-lg-4">
+                            last name is required.
+                          </div>
+                <div class="row">
+                    <div class="col-lg-6 ">
+                        <input #email="ngModel" type="email" class="form-control" name="userEmanil" placeholder="User email"  required [(ngModel)]="model.email">
+                    </div>
+                    <div *ngIf="email.invalid && email.dirty " class="alert alert-danger col-lg-4 ">
+                            email is required.
+                          </div>
+                </div>
+                <div class="row">
+                    <div class=" col-lg-4 ">
+                        <input #phone="ngModel"type="number" class="form-control" name="phoneNumber" placeholder="01********"  required [(ngModel)]="model.phone">
+                    </div>
+                    <div *ngIf="phone.invalid && phone.dirty " class="alert alert-danger col-lg-2 ">
+                            phone is required.
+                          </div>
+                </div>
+                <div class="row">
+                    <div class=" col-lg-6 ">
+                        <input #pass="ngModel"type="password" class="form-control" name="Pass" placeholder="password"  required [(ngModel)]="model.pass">
+                    </div>
+                    <div *ngIf="pass.invalid && pass.dirty " class="alert alert-danger col-lg-2 ">
+                            password is required.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="btn-group">
+                        <label class="btn btn-primary" [(ngModel)]="model.gender" name="gender"
+                               btnRadio="male" tabindex="0" role="button">male</label>
+                        <label class="btn btn-primary" [(ngModel)]="model.gender" name="gender"
+                               btnRadio="female" tabindex="0" role="button">female</label>
+                      </div>
+                    </div>
+                <div class="row">
+                <select class="custom-select col-lg-4" name="city" [(ngModel)]="model.city" placeholder="city">
+                        <option selected="selected">Helwan</option>
+                        <option >maadi</option>
+                </select>
+                </div>
+                <div class="row">
+                    <div class="btn-group">
+                        <label class="btn btn-primary" [(ngModel)]="model.customer" name="customer"
+                               btnRadio="customer" tabindex="0" role="button">customer</label>
+                        <label class="btn btn-primary" [(ngModel)]="model.customer" name="customer"
+                               btnRadio="photographer" tabindex="0" role="button">photographer</label>
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-12 col-md-4 form-group">
+                      <input type="text" placeholder="Birth Date" name ="bd" [(ngModel)]="bd" class="form-control" bsDatepicker >
+                    </div>
+                </div>
+                <button type="submit" class="btn-success btn " [disabled]="form.invalid">
+                        Sign up
+                    </button>
+            </div>
+       </form>
+   </div>
+   
