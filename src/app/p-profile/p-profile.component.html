@@ -1,19 +1,67 @@
-<body class="w3-light-grey w3-content" style="max-width:1600px">
-
-  <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-    <div class="w3-container">
-      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
-        <i class="fa fa-remove"></i>
-      </a>
-      <img src="../../assets/images/profile.jpg" style="width:45%;" class="w3-round"><br><br>
-      <h4><b>PORTFOLIO</b></h4>
+<div class="container full">
+  <div class="about">
+    <h3 class="na"><i class="fas fa-map-marker-alt nn "></i><b>Philopateer nabil</b></h3>
+    <img src="../../assets/images/profile.jpg" class="pp">
+    <p class="des">Helwan </p>
+    <button type="button" class="btn btn-info b1">Follow</button>
+    <button type="button" class="btn btn-danger b2">Report</button>
+  </div>
+  <div class="about me">
+    <i class="fas fa-thumbs-up">likes 135,455</i>
+    <br>
+    <i class="fas fa-address-book"> followers 23,123</i>
+    <i class="fas fa-location-arrow">following 53,122</i>
+  </div>
+  <div class="about">
+    <h3>about</h3>
+    <p class="bio"> egyptian photographer who started working in this car since 2001</p>
+  </div>
+  <div class="about">
+    
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+     
+  </div>
+  <div class="screen container">
+    <div class="filter_by">
+      <ul>
+        <li>
+          <button class="filt">
+            date
+          </button>
+        </li>
+        <li>
+          <button class="filt">
+            popular
+          </button>
+        </li>
+      </ul>
     </div>
-    <div class="w3-bar-block">
-      <button  (click)="section_change(1)" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>PHOTOS</button> 
-      <button  (click)="section_change(2)" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</button>
-      <button (click)="section_change(3)" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</button>
-    </div> 
-  </nav>
+    <div class="work" style="margin-top:20px;">
+      <div class="container">
+        <div class="row">
+          <div *ngFor="let photo of photos" class="card col-md-3 " style="padding:0px; margin-left: 10px;">
+              <img class="card-img-top " src="../../assets/images/work1.jpg"(click)="openModal(template)" style="cursor: pointer;"alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<app-photos *ngIf="section == 1"></app-photos>
-</body>
+
+
+<ng-template #template>
+  <img src="../../assets/images/work1.jpg" style="display: block;max-width:100%; height:auto">
+  </ng-template>

@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http , HttpModule} from '@angular/http';
 import { User } from '../models/user.model';
-import { HttpClient } from 'selenium-webdriver/http';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable()
-export class FForm {
-    constructor() {
+export class Form {
+    private connectionstring: string;
+    constructor(private http: HttpClient) {
 
     }
-    postEmployeeForm (user: User) {
-        console.log('user information:', user);
+
+    getimages(): Observable<number> {
+        return this.http.get<number>(this.connectionstring);
     }
 }
