@@ -73,7 +73,7 @@ h3{
 .b1
 {
     position: absolute;
-    top:160px;
+    top:190px;
     left:30px;
 }
 
@@ -81,7 +81,7 @@ h3{
 .b2
 {
     position: absolute;
-    top:160px;
+    top:190px;
     left:120px;
 }
 
@@ -134,6 +134,13 @@ h3{
     background: none;
     cursor:pointer;
   }
+  .filt2{
+    float: left;
+    margin-right: 20px;
+    border: none;
+    background: none;
+    cursor:pointer;
+  }
   .filt:hover
   {
       border-bottom: solid;
@@ -147,4 +154,7 @@ h3{
   li{
     display:inline-block;
   }
-  
+  .nav-item
+  {
+      padding-right: 50px;
+  }

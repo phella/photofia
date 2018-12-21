@@ -1,3 +1,70 @@
-<div class="container ">
+<div class="screen container">
+        <div class="filter_by">
+          <ul>
+            <li>
+              <button class="filt" (click)="setOrderBy(1)">
+                date
+              </button>
+            </li>
+            <li>
+              <button class="filt" (click)="setOrderBy(2)">
+                popular
+              </button>
+            </li>
+            <li>
+              <button class="filt2" (click)="setPageNumber(1)">
+                1
+              </button>
+            </li>
+            <li>
+              <button class="filt2" (click)="setPageNumber(2)">
+                2
+              </button>
+            </li>
+            <li>
+              <button class="filt2" (click)="setPageNumber(3)">
+                3
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div class="work" style="margin-top:20px;">
+          <div class="container">
+            <div class="row">
+              <div *ngFor="let img of images" class="card col-md-3 " style="padding:0px; margin-left: 10px;">
+                  <img class="card-img-top " [src]= " base+ img?.path+'.jpg'" (click)="openModal(template,img?.path)" style="cursor: pointer;"alt="Card image cap">
+                  <p> {{img?.date}}</p>
+                  <p> {{img?.imageLocation}}</p>
+                  <div class="card-body">
+                    <h5 class="card-title">{{img?.type}}</h5>
+                    <p class="card-text">{{img?.description}}</p>
+                    <p class="card-text" >rate:{{img?.rate}}</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <ng-template #template>
+        <img [src]="imagePath" style=" max-height:400px; ">
+        <div class="row">
+        <a ><span class="fa fa-star fa-3x" (click)="selected[0]=true;selected[1]=false;selected[2]=false;selected[3]=false;selected[4]=false;" [ngClass]="{'yel': selected[0] === true || selected[1] === true || selected[2] === true || selected[3] === true || selected[4] === true}"></span></a>
+        <a ><span class="fa fa-star fa-3x" (click)="selected[1]=true ;selected[2]=false;selected[3]=false;selected[4]=false;"  [ngClass]="{'yel':  selected[1] === true || selected[2] === true || selected[3] === true || selected[4] === true}" ></span></a>
+        <a ><span class="fa fa-star fa-3x " (click)="selected[2]=true;selected[3]=false;selected[4]=false;" [ngClass]="{'yel': selected[2] === true || selected[3] === true || selected[4] === true}"></span></a>
+        <a ><span class="fa fa-star fa-3x "   (click)="selected[3]=true;selected[4]=false;" [ngClass]="{'yel': selected[3] === true || selected[4] === true}"></span></a>
+        <a ><span class="fa fa-star fa-3x "  (click)="selected[4]=true"  [ngClass]="{'yel': selected[4] === true }"></span></a>
+        </div>
+        <br>
+        <textarea  required id="desciption" rows=3 class="form-control" placeholder="my event..." name = "description" [(ngModel)]="rev.comment"></textarea>
+        <br>
+        <button class="btn btn-primary" (click)="rate()"> submit rate</button>
+        
+        <div *ngFor="let review of reviews " class="card col-md-10" style="margin-top:20px;" >
+          <div class="card-body">
+            <h5 class="card-title"> {{review.userName}} </h5>
+            <h6 class="card-subtitle mb-2 text-muted"> {{review.rate}} </h6>
+            <p class="card-text"> {{review.comment}} </p>
+          </div>
+        </div>
+        </ng-template>

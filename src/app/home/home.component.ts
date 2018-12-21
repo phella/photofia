@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthencationService } from '../authencation.service';
+import { EventsService } from '../services/events.service';
+import { Images } from '../models/Images.model';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -6,10 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  images: Images[];
+  d = new Date();
+  il = new Images('sad', 'asd', 123, 'asd', this.d, 'asdsa', 'adsa', 'asdas');
+  constructor(private at: AuthencationService, private es: EventsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.es.getPhotosHome(this.at.currentUser.email).subscribe(
+      img => { this.images = img ; }
+    );
   }
-
+  signout() {
+  this.at.currentUser.email = '';
+  }
 }

@@ -35,19 +35,12 @@
             <div class="container">
                 <div class="row">
                     <div class=" col-lg-4 ">
-                        <input #firstName="ngModel" type="text" class="form-control" placeholder="First name" name="firstName" required [(ngModel)]="model.firstname">
-                    </div>
-                    <div class=" col-lg-4 ">
-                        <input #lastName="ngModel" type="text" class="form-control" name="lastName" placeholder="Last name"  required [(ngModel)]="model.lastname">
+                        <input #firstName="ngModel" type="text" class="form-control" placeholder="Name" name="firstName" required [(ngModel)]="model.firstname">
                     </div>
                 </div>
                     <div *ngIf="firstName.invalid && firstName.dirty" class="alert alert-danger col-lg-4">
                       First name is required.
                     </div>
-
-                    <div *ngIf="lastName.invalid && lastName.dirty && firstName.valid" class="alert alert-danger col-lg-4 offset-lg-4">
-                            last name is required.
-                          </div>
                 <div class="row">
                     <div class="col-lg-6 ">
                         <input #email="ngModel" type="email" class="form-control" name="userEmanil" placeholder="User email"  required [(ngModel)]="model.email">
@@ -82,8 +75,7 @@
                     </div>
                 <div class="row">
                 <select class="custom-select col-lg-4" name="city" [(ngModel)]="model.city" placeholder="city">
-                        <option selected="selected">Helwan</option>
-                        <option >maadi</option>
+                        <option *ngFor="let city of cities"> {{city}} </option>
                 </select>
                 </div>
                 <div class="row">
@@ -96,10 +88,10 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-12 col-md-4 form-group">
-                      <input type="text" placeholder="Birth Date" name ="bd" [(ngModel)]="bd" class="form-control" bsDatepicker >
+                      <input type="text" placeholder="Birth Date" name ="bd" [(ngModel)]="model.bd" class="form-control" bsDatepicker >
                     </div>
                 </div>
-                <button type="submit" class="btn-success btn " [disabled]="form.invalid">
+                <button (click)="submitForm(form)" type="submit" class="btn-success btn " [disabled]="form.invalid">
                         Sign up
                     </button>
             </div>

@@ -1,67 +1,122 @@
-<div class="container full">
-  <div class="about">
-    <h3 class="na"><i class="fas fa-map-marker-alt nn "></i><b>Philopateer nabil</b></h3>
-    <img src="../../assets/images/profile.jpg" class="pp">
-    <p class="des">Helwan </p>
-    <button type="button" class="btn btn-info b1">Follow</button>
-    <button type="button" class="btn btn-danger b2">Report</button>
-  </div>
-  <div class="about me">
-    <i class="fas fa-thumbs-up">likes 135,455</i>
-    <br>
-    <i class="fas fa-address-book"> followers 23,123</i>
-    <i class="fas fa-location-arrow">following 53,122</i>
-  </div>
-  <div class="about">
-    <h3>about</h3>
-    <p class="bio"> egyptian photographer who started working in this car since 2001</p>
-  </div>
-  <div class="about">
-    
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-     
-  </div>
-  <div class="screen container">
-    <div class="filter_by">
-      <ul>
-        <li>
-          <button class="filt">
-            date
-          </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Photofia</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="#" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li>
-          <button class="filt">
-            popular
-          </button>
+        <li class="nav-item active">
+          <a class="nav-link" href="#" [routerLink]="['/profile/2']">profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" [routerLink]="['/events']">events</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#" [routerLink]="['/cities']">places</a>
+            </li>
+            <li class="nav-item" *ngIf="privilege === 0">
+                <a class="nav-link" href="#" [routerLink]="['/gifts']">Gifts</a>
+              </li>
+        <li class="nav-item dropdown ">
+          <a (click)="getNotification()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Notifications
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a *ngFor="let notification1 of noti1" class="dropdown-item"  style="background-color:beige">
+              {{notification1.username}} applies to your event <button (click)="respondEvent(notification1.id,notification1.userEmail,1)"> yes </button> <button (click)="respondEvent(notification1.id,notification1.userEmail,0)">no</button>
+            </a>
+            <a *ngFor="let notification2 of noti2" class="dropdown-item" href="#" style="background-color:cyan">
+                {{notification2.username}}
+              </a>
+            <a *ngFor="let notification3 of noti3" class="dropdown-item" href="#" style="background-color:red">
+                {{notification3.username}}
+            </a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " (click)="signout()" href="#" [routerLink]="['/sign']">sign out</a>
         </li>
       </ul>
     </div>
-    <div class="work" style="margin-top:20px;">
-      <div class="container">
-        <div class="row">
-          <div *ngFor="let photo of photos" class="card col-md-3 " style="padding:0px; margin-left: 10px;">
-              <img class="card-img-top " src="../../assets/images/work1.jpg"(click)="openModal(template)" style="cursor: pointer;"alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-          </div>
-      </div>
-    </div>
+  </nav>
+
+<div  *ngIf="privilege === 1"  class="container full">
+  <div class="about">
+    <h3 class="na"><i class="fas fa-map-marker-alt nn "></i><b *ngIf="privilege == 1">{{ owner1?.username}}</b></h3>
+    <img  *ngIf="privilege == 1" [src]="owner1?.profilePicture" class="pp">
+  <form #form action='hls.php' method='post'>
+    Select image to upload:
+    <input  type="file" name="image" id="fileToUpload">
+     <button type="submit" class="btn btn-success" (click)="form.submit()">Submit</button>
+  </form>
+    <p class="des" *ngIf="privilege == 1">{{ owner1?.userAddress}} </p>
+    <button  *ngIf="follow === 0 && edit === true "  type="button" class="btn btn-info b1" (click)="togglefollow()">follow</button>
+    <button *ngIf="edit === true && follow ===1 " type="button" class="btn btn-info b1" (click)="togglefollow()">unfollow</button>
+    <button type="button" class="btn btn-danger b2" (click)="togglesessions()"> {{ session }} </button>
+    <button  type="button" class="btn btn-danger b2" (click)="togglesessions2(3)" style="top:700px;"> rate </button>
+    <button   type="button" class="btn btn-danger b2" (click)="togglesessions2(4)" style="top:700px; left:1px;"> reviews </button>
   </div>
+  <div class="about me">
+    rate: {{owner1.rate}}
+    <br>
+    avg price : {{owner1.avgPrice}}
+    <br>
+    phone: {{owner1.userPhone}}
+  </div>
+  <div class="about" >
+    <h3>about</h3>
+    <p class="bio"> {{owner1.bio}}</p>
+  </div>
+  <div class="about" >
+    <h3>Cameras</h3>
+    <p class="bio" *ngFor="let cam of cameras">{{cam.cameraName}} : {{cam.brand}}</p>
+  </div>
+  <div class="about" >
+    <h3>Lenses</h3>
+    <p class="bio" *ngFor="let lens of lenses">{{lens.lensName}} : {{lens.lensType}}</p>
+  </div>
+  <div class="about">
+    <button *ngIf="edit" (click)="toggleEdit()">{{edit2String}}</button>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+  </div>
+
+
+
+
+  <app-photos *ngIf ="sessions === 1 && edit2 === false"></app-photos>
+  <app-reserve *ngIf ="sessions === 2 && edit2 === false "></app-reserve>
+  <app-rate *ngIf="edit2 === false && sessions === 3" > </app-rate>
+  <app-review *ngIf="edit2 === false && sessions === 4 " > </app-review>
+  <app-edit *ngIf="edit2=== true"></app-edit>
+</div>
+
+<div  *ngIf="privilege === 0"  class="container full">
+  <div *ngIf="edit2=== false">
+    <h3><i class="fas fa-map-marker-alt nn "></i><b *ngIf="privilege == 0">{{owner0?.username }}</b></h3>
+    <img *ngIf="privilege == 0" [src]="owner0?.profilePicture" class="pp">
+    <form #form action='hls.php' method='post'>
+        Select image to upload:
+        <input  type="file" name="image" id="fileToUpload">
+         <button type="submit" class="btn btn-success" (click)="form.submit()">Submit</button>
+      </form>
+      <p class="des" *ngIf="privilege == 0">{{owner0?.userAddress }} </p>
+      <button *ngIf="edit" (click)="toggleEdit()">{{edit2String}}</button>
+      </div>
+      <app-edit *ngIf="edit2=== true"></app-edit>
 </div>
 
 
 
-<ng-template #template>
-  <img src="../../assets/images/work1.jpg" style="display: block;max-width:100%; height:auto">
-  </ng-template>
+  

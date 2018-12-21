@@ -2,13 +2,16 @@
     <div class="glitch">
 <div class="signin">
   <div class="container">
-    <form>
+    <form #form="ngForm">
       <div class="logo">
 
       </div>
-      <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Enter your email" >
-      <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Enter your password" > 
-      <button type="submit" class="btn btnn btn-primary">Sign in</button>
+      <div *ngIf="invalid" class="alert alert-danger col-lg-4 ">
+          invalid data
+        </div>
+      <input #email="ngModel" required name="email" [(ngModel)]="login.email" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Enter your email" >
+      <input required #pass="ngModel" name="pass"  [(ngModel)]="login.pass" type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Enter your password" > 
+      <button (click)="signin()" type="submit" [disabled]="form.invalid" class="btn btnn btn-primary">Sign in</button>
       <a href="#">Forget password?</a>
       <p>
           Don't have an account? <a [routerLink]="['/create']"> Sign up</a>

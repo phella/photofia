@@ -1,0 +1,76 @@
+<div class="screen container">
+  <form #form="ngForm"  novalidate >
+    <div class="container">
+        <div class="row">
+            <div class=" col-lg-4 ">
+                <input #firstName="ngModel" type="text" class="form-control" placeholder="name" name="firstName" required [(ngModel)]="model.username">
+            </div>
+        </div>
+            <div *ngIf="firstName.invalid && firstName.dirty" class="alert alert-danger col-lg-4">
+              First name is required.
+            </div>
+        <div class="row">
+            <div class="col-lg-6 ">
+                <input #email="ngModel" type="email" class="form-control" name="userEmanil" placeholder="User email"  required [(ngModel)]="model.userEmail">
+            </div>
+            <div *ngIf="email.invalid && email.dirty " class="alert alert-danger col-lg-4 ">
+                    email is required.
+                  </div>
+        </div>
+        <div class="row">
+            <div class=" col-lg-4 ">
+                <input #phone="ngModel"type="number" class="form-control" name="phoneNumber" placeholder="01********"  required [(ngModel)]="model.userPhone">
+            </div>
+            <div *ngIf="phone.invalid && phone.dirty " class="alert alert-danger col-lg-2 ">
+                    phone is required.
+                  </div>
+        </div>
+        <div  *ngIf="privilege === 1" class="row">
+          <div class=" col-lg-4 ">
+              <input  #avgPrice="ngModel" type="number" class="form-control" name="avgPrice" placeholder=" average price"  required [(ngModel)]="model.avgPrice">
+            </div>
+      </div>
+      <div *ngIf="privilege === 1" class="row">
+          <div class=" col-lg-4 ">
+              <input  #bio="ngModel"  class="form-control" name="bio" placeholder=" bio"  required [(ngModel)]="model.bio">
+            </div>
+      </div>
+      <div *ngIf="privilege === 1" class="row">
+            <div class=" col-lg-4 ">
+                <input  #qualifcations="ngModel"  class="form-control" name="qualifications" placeholder=" qualifications"  required [(ngModel)]="model.qualifications">
+              </div>
+        </div>
+        <div class="row">
+            <div class=" col-lg-6 ">
+                <input #pass="ngModel"type="password" class="form-control" name="Pass" placeholder="password"  required [(ngModel)]="model.password">
+            </div>
+            <div *ngIf="pass.invalid && pass.dirty " class="alert alert-danger col-lg-2 ">
+                    password is required.
+            </div>
+        </div>
+        <div class="row">
+            <div class="btn-group">
+                <label class="btn btn-primary" [(ngModel)]="model.gender" name="gender"
+                            value="true"   btnRadio="male" tabindex="0" role="button">male</label>
+                <label class="btn btn-primary" [(ngModel)]="model.gender" name="gender"
+                          value="false"     btnRadio="female" tabindex="0" role="button">female</label>
+              </div>
+            </div>
+        <div class="row">
+        <select class="custom-select col-lg-4" name="city" [(ngModel)]="model.userAddress" placeholder="city">
+                <option *ngFor="let city of places">{{city}}</option>
+        </select>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-12 col-md-4 form-group">
+              <input type="text" placeholder="Birth Date" name ="bd" [(ngModel)]="model.birthDate" class="form-control" bsDatepicker >
+            </div>
+        </div>
+        <button (click)="update()"  class="btn-success btn " [disabled]="form.invalid">
+                update
+            </button>
+            {{response}}
+    </div>
+</form>
+</div>
+{{model|json}}

@@ -1,0 +1,32 @@
+<div class="col-md-12">
+  <h3>Create Event</h3>
+</div>
+<div class="col-md-6">
+  <form autocomplete="off" #form="ngForm">
+    <div class="form-group">
+      <label for="eventName">Event Name:</label>
+      <input required name="name" [(ngModel)]="_event.eventName" id="eventName" type="text" class="form-control" placeholder="event name..." />
+    </div>
+    <div class="form-group">
+      <label >Cities:</label>
+      <select required class="form-control" name="location" [(ngModel)]="_event.eventLocation">
+        <option *ngFor="let city of cities " > {{city}} </option>
+        <option> ay tahbeeed </option>
+      </select>
+    </div>
+    <div class="form-group">
+    <label > date & time:</label>
+    <input required class="form-control" type="datetime-local" name="dt" [(ngModel)]="_event.date">
+    </div>
+    <div class="form-group">
+      <label >description:</label>
+      <textarea required id="desciption" rows=3 class="form-control" placeholder="my event..." name = "description" [(ngModel)]="_event.description"></textarea>
+    </div>
+    <button type="submit" (click)="createEvent()"  class="btn btn-primary">create event</button>
+  </form>
+
+
+  
+
+  
+</div>

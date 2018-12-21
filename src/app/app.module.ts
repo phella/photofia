@@ -8,7 +8,6 @@ import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
-import { Form } from './services/Form.service';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PProfileComponent } from './p-profile/p-profile.component';
@@ -17,6 +16,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import { ReserveComponent } from './reserve/reserve.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { EventsComponent } from './events/events.component';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { EditComponent } from './edit/edit.component';
+import { CreateEventComponent } from './create-event/create-event.component';
+import { PlacesComponent } from './places/places.component';
+import { PlaceDetailsComponent } from './place-details/place-details.component';
+import { DatePipe } from '@angular/common';
+import { RateComponent } from './rate/rate.component';
+import { ReviewComponent } from './review/review.component';
+import { GiftComponent } from './gift/gift.component';
+import {CookieService } from 'angular2-cookie/services/cookies.service';
+import { StatisticsComponent } from './statistics/statistics.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +36,16 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     CreateComponent,
     PProfileComponent,
     PhotosComponent,
-    ReserveComponent
+    ReserveComponent,
+    EventsComponent,
+    EditComponent,
+    CreateEventComponent,
+    PlacesComponent,
+    PlaceDetailsComponent,
+    RateComponent,
+    ReviewComponent,
+    GiftComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
@@ -35,11 +55,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FormsModule,
     ButtonsModule.forRoot(),
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TimepickerModule.forRoot(),
   ],
   providers: [
     AuthencationService,
-    Form,
+    DatePipe,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

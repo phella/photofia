@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthencationService } from './authencation.service';
 
 
 @Component({
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'project';
+export class AppComponent implements OnInit {
+  title = 'photophia';
+  constructor(private ats: AuthencationService) {
+  }
+  ngOnInit() {
+    this.ats.checkAuthStatus().subscribe();
+  }
 }

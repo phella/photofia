@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Photofia</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="#" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="#" [routerLink]="['/profile/'+this.at.currentUser.email]">profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" [routerLink]="['/events']">events</a>
+          </li>
+          <li class="nav-item active">
+              <a class="nav-link" href="#" [routerLink]="['/cities']">places</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" [routerLink]="['/gifts']">Gifts</a>
+            </li>
+        <li class="nav-item dropdown ">
+          <a (click)="getNotification()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Notifications
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a *ngFor="let notification1 of noti1" class="dropdown-item"  style="background-color:beige">
+              {{notification1.username}} applies to your event <button (click)="respondEvent(notification1.id,notification1.userEmail,1)"> yes </button> <button (click)="respondEvent(notification1.id,notification1.userEmail,0)">no</button>
+            </a>
+            <a *ngFor="let notification2 of noti2" class="dropdown-item" href="#" style="background-color:cyan">
+                {{notification2.username}}
+              </a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " (click)="signout()" href="#" [routerLink]="['/sign']">sign out</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+
+<div *ngFor="let _place of places " class="card col-md-10" style="margin-top:20px;" (click)="toggleDetails(_place)">
+    <div class="card-body" *ngIf="allPlaces === true">
+      <h5 class="card-title"> {{_place.placeName}} </h5>
+      <p class="card-text"> {{ _place.description}} </p>
+    </div>
+  </div>
+  <app-place-details *ngIf="allPlaces === false" [selectedPlace]="selectedPlace"></app-place-details>
