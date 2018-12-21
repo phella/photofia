@@ -16,7 +16,7 @@ import { Options } from 'selenium-webdriver';
   providedIn: 'root'
 })
 export class EventsService {
-   //private base = 'http://169.254.137.164/api/';
+   // private base = 'http://169.254.137.164/api/';
 
    private base = 'http://127.0.0.1:8000/api/';
   // private base = 'http://192.168.137.1:8080/photofia-database-project/public/api/';
@@ -90,7 +90,7 @@ export class EventsService {
       return this.http.post<Event>(this.base + 'createEvent/' + id, _event, options);
     }
     getPlaces(): Observable<Place[]> {
-      return this.http.get<Place[]>(this.base+ 'getAllPlaces/');
+      return this.http.get<Place[]>(this.base + 'getAllPlaces/');
     }
     getPhotosHome(id: string): Observable<Images[]> {
       return this.http.get<Images[]>(this.base + 'images/follow/' + id + '/time/1');
@@ -129,7 +129,7 @@ export class EventsService {
       return this.http.post<string>(this.base + 'redeemGift/' + id , giftName , options);
     }
     customerFollowers(id: string): Observable<Notifi[]> {
-     return this.http.get<Notifi[]>(this.base + 'customersFollows/'+id);
+     return this.http.get<Notifi[]>(this.base + 'customersFollows/' + id);
     }
     uploadProfilePicture(id: string, selectedFile: File) {
       const fd = new FormData();
