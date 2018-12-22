@@ -47,12 +47,12 @@
 <div  *ngIf="privilege === 1"  class="container full">
   <div class="about">
     <h3 class="na"><i class="fas fa-map-marker-alt nn "></i><b *ngIf="privilege == 1">{{ owner1?.username}}</b></h3>
-    <img  *ngIf="privilege == 1" [src]="owner1?.profilePicture" class="pp">
-  <form #form action='hls.php' method='post'>
-    Select image to upload:
-    <input  type="file" name="image" id="fileToUpload">
-     <button type="submit" class="btn btn-success" (click)="form.submit()">Submit</button>
-  </form>
+    <img  *ngIf="privilege == 1" [src]="'http://localhost/images/' + owner1?.profilePicture" class="pp">
+    <form #form [action]="'http://localhost/api/profile/profilePicture/' + at.currentUser.email" method='post' enctype="multipart/form-data">
+      Select image to upload:
+      <input  type="file" name="image" id="image">
+       <button type="submit" class="btn btn-success" (click)="form.submit()">Submit</button>
+    </form>
     <p class="des" *ngIf="privilege == 1">{{ owner1?.userAddress}} </p>
     <button  *ngIf="follow === 0 && edit === true "  type="button" class="btn btn-info b1" (click)="togglefollow()">follow</button>
     <button *ngIf="edit === true && follow ===1 " type="button" class="btn btn-info b1" (click)="togglefollow()">unfollow</button>
@@ -105,12 +105,12 @@
 <div  *ngIf="privilege === 0"  class="container full">
   <div *ngIf="edit2=== false">
     <h3><i class="fas fa-map-marker-alt nn "></i><b *ngIf="privilege == 0">{{owner0?.username }}</b></h3>
-    <img *ngIf="privilege == 0" [src]="owner0?.profilePicture" class="pp">
-    <form #form action='hls.php' method='post'>
-        Select image to upload:
-        <input  type="file" name="image" id="fileToUpload">
-         <button type="submit" class="btn btn-success" (click)="form.submit()">Submit</button>
-      </form>
+    <img *ngIf="privilege == 0" [src]="'http://localhost/images/' + owner0?.profilePicture" class="pp">
+    <form #form [action]="'http://localhost/api/profile/profilePicture/' + at.currentUser.email" method='post' enctype="multipart/form-data">
+      Select image to upload:
+      <input  type="file" name="image" id="image">
+       <button type="submit" class="btn btn-success" (click)="form.submit()">Submit</button>
+    </form>
       <p class="des" *ngIf="privilege == 0">{{owner0?.userAddress }} </p>
       <button *ngIf="edit" (click)="toggleEdit()">{{edit2String}}</button>
       </div>
