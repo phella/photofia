@@ -22,7 +22,6 @@ export class PhotosComponent implements OnInit {
   images: Images[] = [  ];
   imagePath: string ;
   path: string;
-  selected: boolean[] = new Array(5);
   rev: Review;
   firstTime: boolean;
   reviews: Review[];
@@ -63,12 +62,6 @@ export class PhotosComponent implements OnInit {
     this.respond();
    }
    rate() {
-    for
-    ( let i = 0 ; i < 5 ; i++) {
-      if ( this.selected[i] === true) {
-        this.rev.rate = i + 1;
-      }
-    }
     if (this.firstTime === true) {
     this.es.reviewPhoto(this.path, this.at.currentUser.email, this.rev ).subscribe();
     } else {
@@ -81,7 +74,6 @@ export class PhotosComponent implements OnInit {
       this.firstTime = true;
     } else  {
       this.firstTime = false;
-      this.selected[this.rev.rate - 1] = true;
     }
   }
 }

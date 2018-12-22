@@ -49,11 +49,11 @@
       <ng-template #template>
         <img [src]="imagePath" style=" max-height:400px; ">
         <div class="row">
-        <a ><span class="fa fa-star fa-3x" (click)="selected[0]=true;selected[1]=false;selected[2]=false;selected[3]=false;selected[4]=false;" [ngClass]="{'yel': selected[0] === true || selected[1] === true || selected[2] === true || selected[3] === true || selected[4] === true}"></span></a>
-        <a ><span class="fa fa-star fa-3x" (click)="selected[1]=true ;selected[2]=false;selected[3]=false;selected[4]=false;"  [ngClass]="{'yel':  selected[1] === true || selected[2] === true || selected[3] === true || selected[4] === true}" ></span></a>
-        <a ><span class="fa fa-star fa-3x " (click)="selected[2]=true;selected[3]=false;selected[4]=false;" [ngClass]="{'yel': selected[2] === true || selected[3] === true || selected[4] === true}"></span></a>
-        <a ><span class="fa fa-star fa-3x "   (click)="selected[3]=true;selected[4]=false;" [ngClass]="{'yel': selected[3] === true || selected[4] === true}"></span></a>
-        <a ><span class="fa fa-star fa-3x "  (click)="selected[4]=true"  [ngClass]="{'yel': selected[4] === true }"></span></a>
+        <a ><span class="fa fa-star fa-3x" (click)="rev.rate=1" [ngClass]="{'yel': rev.rate >= 1}"></span></a>
+        <a ><span class="fa fa-star fa-3x" (click)="rev.rate=2"  [ngClass]="{'yel':  rev.rate >= 2}" ></span></a>
+        <a ><span class="fa fa-star fa-3x " (click)="rev.rate=3" [ngClass]="{'yel': rev.rate >= 3}"></span></a>
+        <a ><span class="fa fa-star fa-3x "   (click)="rev.rate=4" [ngClass]="{'yel': rev.rate >= 4}"></span></a>
+        <a ><span class="fa fa-star fa-3x "  (click)="rev.rate=5"  [ngClass]="{'yel': rev.rate >= 5 }"></span></a>
         </div>
         <br>
         <textarea  required id="desciption" rows=3 class="form-control" placeholder="my event..." name = "description" [(ngModel)]="rev.comment"></textarea>
