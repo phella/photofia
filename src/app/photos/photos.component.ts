@@ -11,7 +11,7 @@ import { Review } from '../models/review.model';
   templateUrl: './photos.component.html',
   styleUrls: ['./photos.component.css']
 })
-export class PhotosComponent implements OnInit, OnChanges {
+export class PhotosComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(private modalService: BsModalService, private es: EventsService, private route: ActivatedRoute, private at: AuthencationService) { }
@@ -26,11 +26,12 @@ export class PhotosComponent implements OnInit, OnChanges {
   rev: Review;
   firstTime: boolean;
   reviews: Review[];
+  interval: any;
   ngOnInit() {
-  }
-
-  ngOnChanges() {
     this.respond();
+    this.interval = setInterval(() => { 
+      this.respond(); 
+  }, 5000);
   }
   openModal(template: TemplateRef<any>, path: string) {
     this.path = path;
