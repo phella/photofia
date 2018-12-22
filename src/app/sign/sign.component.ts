@@ -20,7 +20,6 @@ export class SignComponent  {
       if (resp) {
         this.invalid = true;
       } else {
-      this.env.email = this.login.email ;
       this.cookie.put('email', this.login.email );
       this.route.navigate(['home']);
       }
