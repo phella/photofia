@@ -83,14 +83,14 @@ export class EventsService {
      return this.http.get<Event[]>(this.base + 'appliableEvents/' + id);
     }
     getCities(): Observable<string[]> {
-      return this.http.get<string[]>(this.base + 'getplaces/' );
+      return this.http.get<string[]>(this.base + 'getplaces' );
     }
     createEvent(id: string, _event: Event) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
       return this.http.post<Event>(this.base + 'createEvent/' + id, _event, options);
     }
     getPlaces(): Observable<Place[]> {
-      return this.http.get<Place[]>(this.base+ 'getAllPlaces/');
+      return this.http.get<Place[]>(this.base+ 'getAllPlaces');
     }
     getPhotosHome(id: string): Observable<Images[]> {
       return this.http.get<Images[]>(this.base + 'images/follow/' + id + '/time/1');
