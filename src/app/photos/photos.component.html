@@ -32,7 +32,7 @@
           <div class="container">
             <div class="row">
               <div *ngFor="let img of images" class="card col-md-3 " style="padding:0px; margin-left: 10px;">
-                  <img class="card-img-top " [src]= " base+ img?.path+'.jpg'" (click)="openModal(template,img?.path)" style="cursor: pointer;"alt="Card image cap">
+                  <img class="card-img-top " [src]= "base+ img?.path" (click)="openModal(template,img?.path)" style="cursor: pointer;"alt="Card image cap">
                   <p> {{img?.date}}</p>
                   <p> {{img?.imageLocation}}</p>
                   <div class="card-body">

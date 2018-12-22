@@ -136,15 +136,15 @@ export class EventsService {
       fd.append('image', selectedFile , selectedFile.name);
      return this.http.post(this.base + 'profile/profilePicture/' + id , selectedFile );
     }
-    getCurrentPhotoReview(id: string, currentUser: string, path: string): Observable<Review> {
-      return this.http.get<Review>(this.base + 'photographer/review/' + id + '/' + currentUser);
+    getCurrentPhotoReview(currentUser: string, path: string): Observable<Review> {
+      return this.http.get<Review>(this.base + 'images/review/' + currentUser + '/' + path);
     }
-    reviewPhoto(id: string , currentUser: string , rev: Review) {
+    reviewPhoto(path: string , currentUser: string , rev: Review) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
-      return this.http.post<string>(this.base + 'photographer/reviewPost/' + id + '/' + currentUser, rev , options);
+      return this.http.post<string>(this.base + 'images/review/' + currentUser + '/' + path, rev , options);
     }
-    updateReviewPhoto(id: string , currentUser: string , rev: Review) {
+    updateReviewPhoto(path: string , currentUser: string , rev: Review) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
-      return this.http.post(this.base + 'photographer/updateReview/' + id + '/' + currentUser, rev , options);
+      return this.http.post(this.base + 'images/updateReview/' + currentUser + '/' + path, rev , options);
     }
   }

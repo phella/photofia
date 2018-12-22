@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
   images: Images[];
   d = new Date();
-  il = new Images('sad', 'asd', 123, 'asd', this.d, 'asdsa', 'adsa', 'asdas');
+  base = 'http://localhost/images/';
   constructor(private at: AuthencationService, private es: EventsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
