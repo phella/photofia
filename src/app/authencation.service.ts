@@ -18,7 +18,6 @@ export class AuthencationService implements CanActivate {
   prev = 1; // 1 for photographer
   constructor(private router: Router, private http: HttpClient, private cookie: CookieService) {
     this.is_Auth = true;
-    this.currentUser.firstname = 'khaled moataz';
     this.currentUser.email = this.cookie.get('email');
    }
   canActivate()  {

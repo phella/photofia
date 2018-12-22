@@ -3,13 +3,14 @@ import {Photographer} from '../models/photographer';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {EventsService} from '../services/events.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { AuthencationService } from '../authencation.service';
 import { Customer } from '../models/Customer.model';
 import { Notifi } from '../models/Notification.model';
 import { Lens } from '../models/lens.model';
 import { Camera } from '../models/camera.model';
 import { environment } from '../../environments/environment';
+import { CookieService } from 'angular2-cookie';
 @Component({
   selector: 'app-p-profile',
   templateUrl: './p-profile.component.html',
@@ -17,7 +18,7 @@ import { environment } from '../../environments/environment';
 })
 export class PProfileComponent implements  OnInit {
   // tslint:disable-next-line:max-line-length
-  constructor(private modalService: BsModalService, private es: EventsService, private route: ActivatedRoute, private at: AuthencationService) {
+  constructor(private modalService: BsModalService, private es: EventsService, private route: ActivatedRoute, private at: AuthencationService, private cookie: CookieService, private _route: Router ) {
   }
   modalRef: BsModalRef;
   bd = new Date('jan 1 2017');
@@ -54,6 +55,8 @@ export class PProfileComponent implements  OnInit {
       this.es.getCustomer(this.route.snapshot.params['id'] ).subscribe((ph: Customer) => {
         this.owner0 = ph ; }
       );
+      } else if (this.privilege === 2 ) {
+        this._route.navigate(['/stats']);
       }
       this.getFollowStatus();
       if ( this.at.currentUser.email === this.route.snapshot.params['id']) {
@@ -158,4 +161,8 @@ export class PProfileComponent implements  OnInit {
   onUpload() {
     this.es.uploadProfilePicture(this.at.currentUser.email, this.selectedFile ).subscribe();
   }
+  signout() {
+    this.at.currentUser.email = '';
+    this.cookie.removeAll();
+    }
 }

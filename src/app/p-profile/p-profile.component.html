@@ -30,10 +30,10 @@
               {{notification1.username}} applies to your event <button (click)="respondEvent(notification1.id,notification1.userEmail,1)"> yes </button> <button (click)="respondEvent(notification1.id,notification1.userEmail,0)">no</button>
             </a>
             <a *ngFor="let notification2 of noti2" class="dropdown-item" href="#" style="background-color:cyan">
-                {{notification2.username}}
+                {{notification2.username}} reserved 
               </a>
             <a *ngFor="let notification3 of noti3" class="dropdown-item" href="#" style="background-color:red">
-                {{notification3.username}}
+                {{notification3.username}} followed you
             </a>
           </div>
         </li>

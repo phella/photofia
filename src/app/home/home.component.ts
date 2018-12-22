@@ -3,6 +3,7 @@ import { AuthencationService } from '../authencation.service';
 import { EventsService } from '../services/events.service';
 import { Images } from '../models/Images.model';
 import { ActivatedRoute } from '@angular/router';
+import { CookieService } from 'angular2-cookie';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   images: Images[];
   d = new Date();
   base = 'http://localhost/images/';
-  constructor(private at: AuthencationService, private es: EventsService, private route: ActivatedRoute) { }
+  constructor(private at: AuthencationService, private es: EventsService, private route: ActivatedRoute, private cookie: CookieService) { }
 
   ngOnInit() {
     this.es.getPhotosHome(this.at.currentUser.email).subscribe(
@@ -23,5 +24,6 @@ export class HomeComponent implements OnInit {
   }
   signout() {
   this.at.currentUser.email = '';
+  this.cookie.removeAll();
   }
 }

@@ -21,6 +21,7 @@ export class SignComponent  {
         this.invalid = true;
       } else {
       this.cookie.put('email', this.login.email );
+      this.as.currentUser.email = this.login.email;
       this.route.navigate(['home']);
       }
     });
