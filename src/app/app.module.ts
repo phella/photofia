@@ -28,6 +28,7 @@ import { ReviewComponent } from './review/review.component';
 import { GiftComponent } from './gift/gift.component';
 import {CookieService } from 'angular2-cookie/services/cookies.service';
 import { StatisticsComponent } from './statistics/statistics.component';
+// import { SSRSReportViewerModule } from 'ngx-ssrs-reportviewer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
     ButtonsModule.forRoot(),
     HttpClientModule,
     ModalModule.forRoot(),
-    TimepickerModule.forRoot(),
+    TimepickerModule.forRoot()
   ],
   providers: [
     AuthencationService,

@@ -11,7 +11,7 @@ import { Review } from '../models/review.model';
 })
 export class RateComponent implements OnInit {
   selected: boolean[] = new Array(5);
-  rev = new Review();
+  rev: Review;
   firstTime: boolean;
   constructor(private es: EventsService, private at: AuthencationService, private route: ActivatedRoute) { }
 
@@ -34,7 +34,7 @@ export class RateComponent implements OnInit {
     }
   }
   setreview() {
-    if ( this.rev == null) {
+    if ( this.rev  === undefined) {
       this.firstTime = true;
     } else  {
       this.firstTime = false;

@@ -6,7 +6,6 @@ import {EventsService} from '../services/events.service';
 import {ActivatedRoute} from '@angular/router';
 import { AuthencationService } from '../authencation.service';
 import { Review } from '../models/review.model';
-import { TouchSequence } from 'selenium-webdriver';
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.component.html',
@@ -48,7 +47,7 @@ export class PhotosComponent implements OnInit {
     this.es.getPhotoReviews(this.route.snapshot.params['id'], path).subscribe(
       rev => { this.reviews = rev ; }
     );
-    this.es.getCurrentPhotoReview(this.at.currentUser.email,path).subscribe(
+    this.es.getCurrentPhotoReview(this.at.currentUser.email, path).subscribe(
       review => {this.rev = review ; this.setreview(); }
     );
   }

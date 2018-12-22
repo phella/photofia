@@ -18,7 +18,7 @@ import { Options } from 'selenium-webdriver';
 export class EventsService {
    // private base = 'http://169.254.137.164/api/';
 
-   private base = 'http://192.168.1.100/api/';
+   private base = 'http://169.254.137.164/api/';
   // private base = 'http://192.168.137.1:8080/photofia-database-project/public/api/';
   constructor(private http: HttpClient) {
    }
@@ -102,10 +102,10 @@ export class EventsService {
       return this.http.get<Lens[]>(this.base + 'getPhotographerLenses/' + id );
     }
     getReviews(id: string ): Observable<Review[]> {
-      return this.http.get<Review[]>('');
+      return this.http.get<Review[]>(this.base +  'photographer/reviews/' + id);
     }
     getPhotoReviews(id: string, path: string ): Observable<Review[]> {
-      return this.http.get<Review[]>('');
+      return this.http.get<Review[]>(this.base + 'image/reviews/' + path);
     }
     reviewPhotographer(id: string , currentUser: string , rev: Review) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};

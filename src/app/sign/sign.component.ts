@@ -17,11 +17,11 @@ export class SignComponent  {
    }
   signin() {
     this.as.login(this.login).subscribe(resp => {
-      if (resp) {
+      if (resp === null) {
         this.invalid = true;
       } else {
-      this.cookie.put('email', this.login.email );
-      this.as.currentUser.email = this.login.email;
+      this.cookie.put('email', this.login.userEmail );
+      this.as.currentUser.email = this.login.userEmail;
       this.route.navigate(['home']);
       }
     });

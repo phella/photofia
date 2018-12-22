@@ -1,7 +1,7 @@
 export class LogIn {
     constructor(
-        public email: string,
-        public pass: string,
+        public userEmail: string,
+        public password: string,
     ) {
     }
 }

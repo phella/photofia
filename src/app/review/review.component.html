@@ -1,7 +1,9 @@
-<div *ngFor="let review of reviews " class="card col-md-10" style="margin-top:20px;" >
+<div class="screen">
+<div *ngFor="let review of reviews " class="card " style="margin-top:20px; padding-right: 400px">
   <div class="card-body">
-    <h5 class="card-title"> {{review.userName}} </h5>
-    <h6 class="card-subtitle mb-2 text-muted"> {{review.rate}} </h6>
+    <h4 class="card-title"><b> {{review.username}} </b></h4>
+    <h6 class="card-subtitle mb-2 text-muted" style="color:blue">rate: {{review.rate}} </h6>
     <p class="card-text"> {{review.comment}} </p>
   </div>
+</div>
 </div>

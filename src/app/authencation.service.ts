@@ -6,6 +6,7 @@ import {tap, catchError} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { environment } from '../environments/environment';
 import { CookieService } from 'angular2-cookie';
+import { LogIn } from './models/logIn.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class AuthencationService implements CanActivate {
   currentUser = new User();
   env = environment;
   prev = 1; // 1 for photographer
+  private base = 'http://169.254.137.164/api/';
   constructor(private router: Router, private http: HttpClient, private cookie: CookieService) {
     this.is_Auth = true;
     this.currentUser.email = this.cookie.get('email');
@@ -28,19 +30,8 @@ export class AuthencationService implements CanActivate {
        return true;
      }
     }
-    login(log) {
+    login(log: LogIn) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})} ;
-      return this.http.post('/api/login', log , options ).pipe( tap(data => {
-        this.currentUser = <User>data['user'];
-      }))
-      .pipe(catchError(err => {
-        return of (false );
-      }));
+      return this.http.post(this.base + 'login', log , options );
     }
-   checkAuthStatus() {
-    return this.http.get('/api/currentStatus').pipe(tap(data => {
-       if (data instanceof Object) {
-         this.currentUser = <User> data;
-      }}));
-        }
    }

@@ -12,6 +12,5 @@ export class AppComponent implements OnInit {
   constructor(private ats: AuthencationService) {
   }
   ngOnInit() {
-    this.ats.checkAuthStatus().subscribe();
   }
 }

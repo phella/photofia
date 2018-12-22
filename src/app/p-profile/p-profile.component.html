@@ -57,8 +57,8 @@
     <button  *ngIf="follow === 0 && !edit"  type="button" class="btn btn-info b1" (click)="togglefollow()">follow</button>
     <button *ngIf="follow ===1 && !edit " type="button" class="btn btn-info b1" (click)="togglefollow()">unfollow</button>
     <button type="button" *ngIf="!edit" class="btn btn-danger b2" (click)="togglesessions()"> {{ session }} </button>
-    <button  type="button" class="btn btn-danger b2" (click)="togglesessions2(3)" style="top:1570px;"> rate </button>
-    <button   type="button" *ngIf="!edit" class="btn btn-danger b2" (click)="togglesessions2(4)" style="top:1570px; left:1px;"> reviews </button>
+    <button  type="button" *ngIf="!edit" class="btn btn-danger b2" (click)="togglesessions2(3)" style="top:1570px;"> rate </button>
+    <button   type="button"  class="btn btn-danger b2" (click)="togglesessions2(4)" style="top:1570px; left:1px;"> reviews </button>
   </div>
   <div class="about me">
     rate: {{owner1.rate}}
@@ -73,7 +73,16 @@
   </div>
   <div class="about" >
     <h3>Cameras</h3>
-    <p class="bio" *ngFor="let cam of cameras">{{cam.cameraName}} : {{cam.brand}}</p>
+    <p class="bio" *ngFor="let cam of cameras"><a (click)="viewDetails(cam)" >{{cam.cameraName}}</a> : {{cam.brand}}</p>
+    <div *ngIf="viewCmaDetails" style="background-color: white;color:blue;">
+        resolution: {{selectedCam.resolution}}
+        <br>
+        brand: {{selectedCam.brand}}
+        <br>
+        opticalZoom: {{selectedCam.opticalZoom}}
+        <br>
+        sesnorSize: {{selectedCam.sesnorSize}}
+    </div>
   </div>
   <div class="about" >
     <h3>Lenses</h3>

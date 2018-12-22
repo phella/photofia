@@ -1,0 +1,18 @@
+.screen
+{
+    position: absolute;
+    left:320px;
+    top:100px;
+}
+.checked {
+    color:yellow;
+}
+.yel{
+    color:yellow;
+}
+a{
+    cursor: pointer;
+}
+textarea.form-control{
+    width:600px;
+}

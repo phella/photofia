@@ -1,5 +1,5 @@
 export class Review {
-    userName: string;
+    username: string;
     rate: number;
     comment: string;
     constructor(

@@ -40,6 +40,8 @@ export class PProfileComponent implements  OnInit {
   privilege = 1;
   cameras: Camera[];
   env = environment;
+  viewCmaDetails = false;
+  selectedCam: Camera;
   send: string = 'http://169.254.137.164/api/profile/profilePicture/' + this.at.currentUser.email;
   selectedFile: File = null;
   ngOnInit(): void {
@@ -165,4 +167,8 @@ export class PProfileComponent implements  OnInit {
     this.at.currentUser.email = '';
     this.cookie.removeAll();
     }
+  viewDetails(cam: Camera) {
+    this.viewCmaDetails = true;
+    this.selectedCam = cam;
+  }
 }
