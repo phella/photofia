@@ -83,14 +83,14 @@ export class EventsService {
      return this.http.get<Event[]>(this.base + 'appliableEvents/' + id);
     }
     getCities(): Observable<string[]> {
-      return this.http.get<string[]>(this.base + 'getplaces/' );
+      return this.http.get<string[]>(this.base + 'getplaces' );
     }
     createEvent(id: string, _event: Event) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
       return this.http.post<Event>(this.base + 'createEvent/' + id, _event, options);
     }
     getPlaces(): Observable<Place[]> {
-      return this.http.get<Place[]>(this.base + 'getAllPlaces/');
+      return this.http.get<Place[]>(this.base + 'getAllPlaces');
     }
     getPhotosHome(id: string): Observable<Images[]> {
       return this.http.get<Images[]>(this.base + 'images/follow/' + id + '/time/1');
@@ -136,15 +136,15 @@ export class EventsService {
       fd.append('image', selectedFile , selectedFile.name);
      return this.http.post(this.base + 'profile/profilePicture/' + id , selectedFile );
     }
-    getCurrentPhotoReview(id: string, currentUser: string, path: string): Observable<Review> {
-      return this.http.get<Review>(this.base + 'photographer/review/' + id + '/' + currentUser);
+    getCurrentPhotoReview(currentUser: string, path: string): Observable<Review> {
+      return this.http.get<Review>(this.base + 'images/review/' + currentUser + '/' + path);
     }
-    reviewPhoto(id: string , currentUser: string , rev: Review) {
+    reviewPhoto(path: string , currentUser: string , rev: Review) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
-      return this.http.post<string>(this.base + 'photographer/reviewPost/' + id + '/' + currentUser, rev , options);
+      return this.http.post<string>(this.base + 'images/review/' + currentUser + '/' + path, rev , options);
     }
-    updateReviewPhoto(id: string , currentUser: string , rev: Review) {
+    updateReviewPhoto(path: string , currentUser: string , rev: Review) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
-      return this.http.post(this.base + 'photographer/updateReview/' + id + '/' + currentUser, rev , options);
+      return this.http.post(this.base + 'images/updateReview/' + currentUser + '/' + path, rev , options);
     }
   }

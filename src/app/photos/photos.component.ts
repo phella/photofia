@@ -1,4 +1,4 @@
-import { Component,  Input, SimpleChanges, TemplateRef, OnInit } from '@angular/core';
+import { Component,  Input, SimpleChanges, TemplateRef, OnInit, OnChanges } from '@angular/core';
 import {Images} from '../models/Images.model';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -16,24 +16,30 @@ export class PhotosComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   constructor(private modalService: BsModalService, private es: EventsService, private route: ActivatedRoute, private at: AuthencationService) { }
   modalRef: BsModalRef;
-  base = 'http://169.254.137.164/images/' ;
+  base = 'http://localhost/images/' ;
   pageNumber = 1;
   orderBy = '/time/';
   images: Images[] = [  ];
   imagePath: string ;
-  selected: boolean[] = new Array(5);
-  rev = new Review();
+  path: string;
+  rev: Review;
   firstTime: boolean;
   reviews: Review[];
+  interval: any;
   ngOnInit() {
+    this.respond();
+    this.interval = setInterval(() => { 
+      this.respond(); 
+  }, 5000);
   }
   openModal(template: TemplateRef<any>, path: string) {
+    this.path = path;
     this.modalRef = this.modalService.show(template);
-    this.imagePath = this.base + path + '.jpg' ;
+    this.imagePath = this.base + path;
     this.es.getPhotoReviews(this.route.snapshot.params['id'], path).subscribe(
       rev => { this.reviews = rev ; }
     );
-    this.es.getCurrentPhotoReview(this.route.snapshot.params['id'], this.at.currentUser.email,path).subscribe(
+    this.es.getCurrentPhotoReview(this.at.currentUser.email,path).subscribe(
       review => {this.rev = review ; this.setreview(); }
     );
   }
@@ -56,24 +62,18 @@ export class PhotosComponent implements OnInit {
     this.respond();
    }
    rate() {
-    for
-    ( let i = 0 ; i < 5 ; i++) {
-      if ( this.selected[i] === true) {
-        this.rev.rate = i + 1;
-      }
-    }
     if (this.firstTime === true) {
-    this.es.reviewPhoto(this.route.snapshot.params['id'], this.at.currentUser.email, this.rev ).subscribe();
+    this.es.reviewPhoto(this.path, this.at.currentUser.email, this.rev ).subscribe();
     } else {
-      this.es.updateReviewPhoto(this.route.snapshot.params['id'], this.at.currentUser.email, this.rev).subscribe();
+      this.es.updateReviewPhoto(this.path, this.at.currentUser.email, this.rev).subscribe();
     }
+    this.modalService.hide(1);
   }
   setreview() {
-    if ( this.rev.comment == null) {
+    if ( this.rev.comment === undefined) {
       this.firstTime = true;
     } else  {
       this.firstTime = false;
-      this.selected[this.rev.rate - 1] = true;
     }
   }
 }

@@ -54,8 +54,8 @@
        <button type="submit" class="btn btn-success" (click)="form.submit()">Submit</button>
     </form>
     <p class="des" *ngIf="privilege == 1">{{ owner1?.userAddress}} </p>
-    <button  *ngIf="follow === 0 && edit === true "  type="button" class="btn btn-info b1" (click)="togglefollow()">follow</button>
-    <button *ngIf="edit === true && follow ===1 " type="button" class="btn btn-info b1" (click)="togglefollow()">unfollow</button>
+    <button  *ngIf="follow === 0"  type="button" class="btn btn-info b1" (click)="togglefollow()">follow</button>
+    <button *ngIf="follow ===1 " type="button" class="btn btn-info b1" (click)="togglefollow()">unfollow</button>
     <button type="button" class="btn btn-danger b2" (click)="togglesessions()"> {{ session }} </button>
     <button  type="button" class="btn btn-danger b2" (click)="togglesessions2(3)" style="top:700px;"> rate </button>
     <button   type="button" class="btn btn-danger b2" (click)="togglesessions2(4)" style="top:700px; left:1px;"> reviews </button>
