@@ -18,7 +18,7 @@ import { Options } from 'selenium-webdriver';
 export class EventsService {
    // private base = 'http://169.254.137.164/api/';
 
-   private base = 'http://127.0.0.1/api/';
+   private base = 'http://192.168.1.100/api/';
   // private base = 'http://192.168.137.1:8080/photofia-database-project/public/api/';
   constructor(private http: HttpClient) {
    }

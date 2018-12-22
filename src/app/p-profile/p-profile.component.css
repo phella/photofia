@@ -32,14 +32,14 @@ h4
     background-color: #f9f9f9;
     right:10%;
     top:100px;
-    height: 800px;
+    height: 1750px;
     border:solid 0.1px;
 }
 .about
 {
     width: 220px;
     border-bottom-style:inset;
-    padding-bottom: 50px;
+    padding-bottom: 200px;
     border-right-style: solid;
     
 }
@@ -73,7 +73,7 @@ h3{
 .b1
 {
     position: absolute;
-    top:210px;
+    top:400px;
     left:30px;
 }
 
@@ -81,7 +81,7 @@ h3{
 .b2
 {
     position: absolute;
-    top:210px;
+    top:400px;
     left:120px;
 }
 

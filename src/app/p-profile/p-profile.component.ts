@@ -29,9 +29,9 @@ export class PProfileComponent implements  OnInit {
   noti1: Notifi[];
   noti2: Notifi[];
   noti3: Notifi[];
-  edit: boolean;
+  edit: Boolean = false;
   edit2: Boolean = false;
-  edit2String: String = 'edit';
+  edit2String: String = 'edit your profile';
   loggedin: string;
   sessions = 1;
   followstring = 'follow';
@@ -128,7 +128,7 @@ export class PProfileComponent implements  OnInit {
       this.edit2String = 'back';
     } else {
       this.edit2 = true;
-      this.edit2String = 'edit';
+      this.edit2String = 'edit your profile';
     }
   }
   togglefollow() {
