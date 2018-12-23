@@ -4,6 +4,7 @@ import { EventsService } from '../services/events.service';
 import { Images } from '../models/Images.model';
 import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'angular2-cookie';
+import { Notifi } from '../models/Notification.model';
 
 
 @Component({
@@ -15,9 +16,12 @@ export class HomeComponent implements OnInit {
   images: Images[];
   d = new Date();
   privilege: number;
+  noti1: Notifi[];
+  noti2: Notifi[];
+  noti3: Notifi[];
   base = 'http://localhost/images/';
   adminStats = 'profile';
-  constructor(private at: AuthencationService, private es: EventsService, private route: ActivatedRoute, private cookie: CookieService) { }
+  constructor(public at: AuthencationService, private es: EventsService, private route: ActivatedRoute, private cookie: CookieService) { }
 
   ngOnInit() {
     this.es.getPhotosHome(this.at.currentUser.email).subscribe(
@@ -31,5 +35,16 @@ export class HomeComponent implements OnInit {
   signout() {
   this.at.currentUser.email = '';
   this.cookie.removeAll();
+  }
+  getNotification() {
+    this.es.customerReserve(this.at.currentUser.email).subscribe(
+      noti2 => this.noti2 = noti2
+    );
+    this.es.EventsApplications(this.at.currentUser.email).subscribe(
+      noti1 => this.noti1 = noti1
+    );
+    this.es.customerFollowers(this.at.currentUser.email).subscribe(
+      noti3 => this.noti3 = noti3
+    );
   }
 }

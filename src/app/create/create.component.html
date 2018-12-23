@@ -31,7 +31,7 @@
     </div>
 </div>
    <div class="container main">
-       <form #form="ngForm" (submit)="submitForm(form)" novalidate >
+       <form #form="ngForm" (submit)="submitForm()" novalidate >
             <div class="container">
                 <div class="row">
                     <div class=" col-lg-4 ">
@@ -91,7 +91,7 @@
                       <input type="text" placeholder="Birth Date" name ="bd" [(ngModel)]="model.bd" class="form-control" bsDatepicker >
                     </div>
                 </div>
-                <button (click)="submitForm(form)" type="submit" class="btn-success btn " [disabled]="form.invalid">
+                <button (click)="submitForm()" type="submit" class="btn-success btn " [disabled]="form.invalid">
                         Sign up
                     </button>
             </div>

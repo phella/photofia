@@ -3,6 +3,7 @@ import { Place } from '../models/place.model';
 import { EventsService } from '../services/events.service';
 import { environment} from '../../environments/environment';
 import { AuthencationService } from '../authencation.service';
+import { Notifi } from '../models/Notification.model';
 
 @Component({
   selector: 'app-places',
@@ -14,6 +15,9 @@ export class PlacesComponent implements OnInit {
   selectedPlace: Place ;
   allPlaces = true;
   env = environment;
+  noti1: Notifi[];
+  noti2: Notifi[];
+  noti3: Notifi[];
   constructor(private es: EventsService, private at: AuthencationService) { }
 
   ngOnInit() {
@@ -28,5 +32,16 @@ export class PlacesComponent implements OnInit {
     } else {
       this.allPlaces = true;
     }
+  }
+  getNotification() {
+    this.es.customerReserve(this.at.currentUser.email).subscribe(
+      noti2 => this.noti2 = noti2
+    );
+    this.es.EventsApplications(this.at.currentUser.email).subscribe(
+      noti1 => this.noti1 = noti1
+    );
+    this.es.customerFollowers(this.at.currentUser.email).subscribe(
+      noti3 => this.noti3 = noti3
+    );
   }
 }

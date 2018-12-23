@@ -5,6 +5,7 @@ import { DATE } from 'ngx-bootstrap/chronos/units/constants';
 import { EventsService } from '../services/events.service';
 import { AuthencationService } from '../authencation.service';
 import { Notifi } from '../models/Notification.model';
+import { CookieService } from 'angular2-cookie';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -17,7 +18,7 @@ export class EventsComponent implements OnInit {
   noti2: Notifi[];
   noti3: Notifi[];
   view = 1;
-  constructor(private es: EventsService, private at: AuthencationService) {
+  constructor(private es: EventsService, public at: AuthencationService, private cookie: CookieService) {
    }
 
   ngOnInit() {
@@ -50,4 +51,8 @@ export class EventsComponent implements OnInit {
   apply(eventId: number) {
     this.es.applyEvent(eventId, this.at.currentUser.email).subscribe();
   }
+  signout() {
+    this.at.currentUser.email = '';
+    this.cookie.removeAll();
+    }
 }

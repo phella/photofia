@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { EventsService } from '../services/events.service';
 import { AuthencationService } from '../authencation.service';
 import { Gift } from '../models/Gift.model';
+import { Notifi } from '../models/Notification.model';
 
 @Component({
   selector: 'app-gift',
@@ -11,6 +12,9 @@ import { Gift } from '../models/Gift.model';
 export class GiftComponent implements OnInit, OnChanges {
   points: number;
   gifts: Gift[];
+  noti1: Notifi[];
+  noti2: Notifi[];
+  noti3: Notifi[];
   selectedGift = new Gift();
   response: string;
   constructor(private es: EventsService, private at: AuthencationService) { }
@@ -31,6 +35,17 @@ export class GiftComponent implements OnInit, OnChanges {
   redeem() {
     this.es.redeem(this.at.currentUser.email, this.selectedGift ).subscribe(
       resp => {this.response = resp ; }
+    );
+  }
+  getNotification() {
+    this.es.customerReserve(this.at.currentUser.email).subscribe(
+      noti2 => this.noti2 = noti2
+    );
+    this.es.EventsApplications(this.at.currentUser.email).subscribe(
+      noti1 => this.noti1 = noti1
+    );
+    this.es.customerFollowers(this.at.currentUser.email).subscribe(
+      noti3 => this.noti3 = noti3
     );
   }
 }
