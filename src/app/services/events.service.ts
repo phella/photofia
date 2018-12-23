@@ -19,7 +19,7 @@ import { Charts } from '../models/Charts.model';
 export class EventsService {
    // private base = 'http://169.254.137.164/api/';
 
-   private base = 'http://169.254.137.164/api/';
+   private base = 'http://localhost/api/';
   // private base = 'http://192.168.137.1:8080/photofia-database-project/public/api/';
   constructor(private http: HttpClient) {
    }
@@ -165,6 +165,6 @@ export class EventsService {
     }
     setSchedule( id: string, day: number, hours: number[] ) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
-      return this.http.post(this.base + '' + id + '/' + day , hours , options);
+      return this.http.post(this.base + 'photographer/schedule/' + id + '/' + day , hours , options);
     }
   }

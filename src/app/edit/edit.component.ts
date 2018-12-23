@@ -26,11 +26,12 @@ export class EditComponent implements OnInit {
         this.es.getphotographer(this.route.snapshot.params['id']).subscribe( ph => this.model = ph);
     } else {
       this.es.getCustomer(this.route.snapshot.params['id']).subscribe(cs => {
-        this.model.username = cs.userName;
-        this.model.birthDate = cs.birthDate;
+        this.model.username = cs.username;
+        //this.model.birthDate = cs.birthDate;
         this.model.gender = cs.gender;
         this.model.userAddress = cs.userAddress;
         this.model.userPhone = cs.userPhone;
+        this.model.password = cs.password;
       });
     }
   }
