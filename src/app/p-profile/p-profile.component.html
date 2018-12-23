@@ -57,6 +57,7 @@
     <button  *ngIf="follow === 0 && !edit"  type="button" class="btn btn-info b1" (click)="togglefollow()">follow</button>
     <button *ngIf="follow ===1 && !edit " type="button" class="btn btn-info b1" (click)="togglefollow()">unfollow</button>
     <button type="button" *ngIf="!edit" class="btn btn-danger b2" (click)="togglesessions()"> {{ session }} </button>
+    <button type="button" *ngIf="edit" class="btn btn-danger b2" (click)="togglesessions()"> put schedule </button>
     <button  type="button" *ngIf="!edit" class="btn btn-danger b2" (click)="togglesessions2(3)" style="top:1570px;"> rate </button>
     <button   type="button"  class="btn btn-danger b2" (click)="togglesessions2(4)" style="top:1570px; left:1px;"> reviews </button>
   </div>
@@ -118,6 +119,7 @@
 
   <app-photos *ngIf ="sessions === 1 && edit2 === false"></app-photos>
   <app-reserve *ngIf ="sessions === 2 && edit2 === false "></app-reserve>
+  <app-schedule *ngIf ="sessions === 2 && edit2 === false "></app-schedule>
   <app-rate *ngIf="edit2 === false && sessions === 3" > </app-rate>
   <app-review *ngIf="edit2 === false && sessions === 4 " > </app-review>
   <app-edit *ngIf="edit2=== true"></app-edit>

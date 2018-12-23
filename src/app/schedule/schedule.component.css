@@ -1,0 +1,168 @@
+body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+body{
+    background-color: #f9f9f9;
+}
+
+
+h4
+{
+    text-align: center;
+}
+.fl
+{
+    margin-right: 20px;
+    padding-left:30px;
+    padding-right:30px;
+    padding-top:0px;
+    padding-bottom:0px;
+
+    border-radius: 50px;
+}
+
+
+.pp
+{
+   width:100px;
+   height:100px;
+   border-radius: 100%;
+}
+.full
+{
+    position: absolute;
+    background-color: #f9f9f9;
+    right:10%;
+    top:100px;
+    height: 800px;
+    border:solid 0.1px;
+}
+.about
+{
+    width: 220px;
+    border-bottom-style:inset;
+    padding-bottom: 50px;
+    border-right-style: solid;
+    
+}
+h3{
+    margin-top: 0px;
+}
+.na
+{
+    margin-top:10px;
+    margin-bottom: 10px;
+}
+.des
+{
+    position: absolute;
+    left:140px;
+    top:80px;
+    font-size:14px;
+    font-family: "acumin-pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+    word-wrap: break-word;
+    max-width: 95px;
+}
+
+.nn
+{
+    position: absolute;
+    left:120px;
+    top:80px;
+}
+
+
+.b1
+{
+    position: absolute;
+    top:160px;
+    left:30px;
+}
+
+
+.b2
+{
+    position: absolute;
+    top:160px;
+    left:120px;
+}
+
+.fa-thumbs-up
+{
+    color:#00cccc;
+    margin: 10px;
+    margin-top: 30px;
+}
+.fa-address-book
+{
+    color:#00e600;
+    margin: 10px;
+}
+.fa-location-arrow
+{
+    color:#ff471a;
+    margin:10px;
+}
+.bio{
+    word-wrap: break-word;
+    max-width: 250px; ;
+    font-family: "Raleway"
+}
+@media only screen and (max-width:1000px) {
+    .about {
+      display:none;
+    }
+    .screen[_ngcontent-c1] {
+        position: absolute;
+        left: 0;
+        top: 20px;
+    }
+  }
+  .screen
+  {
+      position: absolute;
+      left:220px;
+      top:300px;
+  }
+  ul {
+    list-style-type: none;
+    margin: auto;
+    width: 90%;
+  }
+  .filt{
+    float: left;
+    margin-right: 50px;
+    border: none;
+    background: none;
+    cursor:pointer;
+  }
+  .filt2{
+    float: left;
+    margin-right: 20px;
+    border: none;
+    background: none;
+    cursor:pointer;
+  }
+  .filt:hover
+  {
+      border-bottom: solid;
+  }
+  .filter_by
+  {
+      width: 80%;
+      height: 30px;
+      border-bottom: inset;
+  }
+  li{
+    display:inline-block;
+  }
+  .nav-item
+  {
+      padding-right: 50px;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 13px;
+  }
+ 

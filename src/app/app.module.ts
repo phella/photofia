@@ -29,6 +29,7 @@ import { GiftComponent } from './gift/gift.component';
 import {CookieService } from 'angular2-cookie/services/cookies.service';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ChartsModule } from 'ng2-charts';
+import { ScheduleComponent } from './schedule/schedule.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { ChartsModule } from 'ng2-charts';
     RateComponent,
     ReviewComponent,
     GiftComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,

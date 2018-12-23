@@ -1,0 +1,46 @@
+<div class="screen container">
+  <form #form="ngForm" novalidate >
+<div class="row" >
+  <select name="day" [(ngModel)]="day" >
+    <option>
+      Saturday
+    </option>
+    <option>
+      Sunday
+    </option>
+    <option>
+      Monday
+    </option>
+    <option>
+      Tueday
+    </option>
+    <option>
+      Wednesday
+    </option>
+    <option>
+      Thursday
+    </option>
+    <option>
+      Friday
+    </option>
+  </select>
+</div>
+<table style="width:20%">
+  <tr>
+      <th></th>
+      <th *ngFor="let k of counter"> {{k}}:00</th>
+  </tr>
+  <tr>
+        <th>AM</th>
+        <th *ngFor="let k of checkBoxes1 ;let i=index" ><input type="checkbox" [checked]="false" [disabled]="k" (click)="deleteAdd(i)"></th>
+      </tr>  
+  <tr>
+      <th>PM</th> 
+      <th *ngFor="let k of checkBoxes2 ;let i=index"><input type="checkbox" [checked]="false" [disabled]="k" (click)="deleteAdd(i+12)"></th>
+    </tr>
+  </table>
+<br>
+<button (click)="close( )" type="submit" class="btn-success btn " > request </button>
+</form>
+{{selectedHour}}
+</div>

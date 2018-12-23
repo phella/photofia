@@ -163,4 +163,8 @@ export class EventsService {
     selectLens(id: string , lens: string) {
       return this.http.get(this.base + 'selectLens/' + id + '/' + lens );
     }
+    setSchedule( id: string, day: number, hours: number[] ) {
+      const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
+      return this.http.post(this.base + '' + id + '/' + day , hours , options);
+    }
   }
