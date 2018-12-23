@@ -32,15 +32,15 @@
   </tr>
   <tr>
         <th>AM</th>
-        <th *ngFor="let k of checkBoxes1 ;let i=index" ><input type="checkbox" [checked]="false" [disabled]="k" (click)="deleteAdd(i)"></th>
+        <th *ngFor="let k of checkBoxes1 ;let i=index" ><input type="checkbox" [checked]="false"  (click)="deleteAdd(i)"></th>
       </tr>  
   <tr>
       <th>PM</th> 
-      <th *ngFor="let k of checkBoxes2 ;let i=index"><input type="checkbox" [checked]="false" [disabled]="k" (click)="deleteAdd(i+12)"></th>
+      <th *ngFor="let k of checkBoxes2 ;let i=index"><input type="checkbox" [checked]="false"  (click)="deleteAdd(i+12)"></th>
     </tr>
   </table>
 <br>
+{{selectedHour}}
 <button (click)="close( )" type="submit" class="btn-success btn " > request </button>
 </form>
-{{selectedHour}}
 </div>
