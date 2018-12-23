@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../services/events.service';
+import { Charts } from '../models/Charts.model';
 
 @Component({
   selector: 'app-statistics',
@@ -7,13 +8,15 @@ import { EventsService } from '../services/events.service';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit {
+  citiesNumbers: number[];
   public lineChartData: Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'events / place'},
+    {data: this.citiesNumbers, label: 'events / place'},
     {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
     {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
   ];
-  cities =  ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartLabels: Array<any> = this.cities ;
+  cities: Charts[];
+  citiesNames: string[];
+  public lineChartLabels: string[] = this.citiesNames ;
   public lineChartOptions: any = {
     responsive: true
   };
@@ -49,6 +52,7 @@ export class StatisticsComponent implements OnInit {
 
   }
   public randomize(): void {
+    // tslint:disable-next-line:prefer-const
     let _lineChartData: Array<any> = new Array(this.lineChartData.length);
     for (let i = 0; i < this.lineChartData.length; i++) {
       _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
@@ -66,7 +70,12 @@ export class StatisticsComponent implements OnInit {
     console.log(e);
   }
   ngOnInit() {
-    this.es.getCities().subscribe(cit => {this.cities = cit; } );
+    this.es.getCharts().subscribe(cit => {this.cities = cit; } );
+    for (let i = 0 ; i < this.cities.length ; i++) {
+      this.citiesNames[i] = this.cities[i].placeName;
+      this.citiesNumbers[i] = this.cities[i].eventsNumber;
+    }
+    this.lineChartLabels = this.citiesNames;
   }
 }
 

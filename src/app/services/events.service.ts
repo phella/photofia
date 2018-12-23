@@ -12,6 +12,7 @@ import { Review } from '../models/review.model';
 import { Lens } from '../models/lens.model';
 import { Gift } from '../models/Gift.model';
 import { Options } from 'selenium-webdriver';
+import { Charts } from '../models/Charts.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -146,5 +147,20 @@ export class EventsService {
     updateReviewPhoto(path: string , currentUser: string , rev: Review) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
       return this.http.post(this.base + 'images/updateReview/' + currentUser + '/' + path, rev , options);
+    }
+    getCharts(): Observable<Charts[]> {
+      return this.http.get<Charts[]>(this.base + 'statistics/eventsPlaces');
+    }
+    getAllCams(): Observable<Camera[]> {
+      return this.http.get<Camera[]>(this.base + 'getAllCameras');
+    }
+    getAllLenses(): Observable<Lens[]> {
+      return this.http.get<Lens[]>(this.base + 'getAllLens');
+    }
+    selectCam(id: string , cam: string) {
+      return this.http.get(this.base + 'selectCam/' + id + '/' + cam );
+    }
+    selectLens(id: string , lens: string) {
+      return this.http.get(this.base + 'selectLens/' + id + '/' + lens );
     }
   }

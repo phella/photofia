@@ -83,10 +83,22 @@
         <br>
         sesnorSize: {{selectedCam.sesnorSize}}
     </div>
+    <select >
+      <option *ngFor="let cam of allCams" (click)="selectCam(cam)">{{cam.cameraName}}</option>
+    </select>
   </div>
   <div class="about" >
     <h3>Lenses</h3>
-    <p class="bio" *ngFor="let lens of lenses">{{lens.lensName}} : {{lens.lensType}}</p>
+    <p class="bio" *ngFor="let lens of lenses"><a (click)="viewlensDetails(lens)">{{lens.lensName}} </a></p>
+    <div *ngIf="viewlens" style="background-color: white;color:blue;">
+        resolution: {{selectedLens.lensType}}
+        <br>
+        brand: {{selectedLens.maxApartureRange}}
+        <br>
+        opticalZoom: {{selectedLens.maxFocalRange}}
+        <br>
+        sesnorSize: {{selectedLens.focusType}}
+    </div>
   </div>
   <div class="about">
     <button *ngIf="edit" style="margin-top:100px;"  type="button" class="btn btn-warning" (click)="toggleEdit()">{{edit2String}}</button>

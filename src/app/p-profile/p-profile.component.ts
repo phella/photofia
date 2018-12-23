@@ -30,6 +30,7 @@ export class PProfileComponent implements  OnInit {
   noti1: Notifi[];
   noti2: Notifi[];
   noti3: Notifi[];
+  allCams: Camera[];
   edit: Boolean = false;
   edit2: Boolean = false;
   edit2String: String = 'edit your profile';
@@ -42,10 +43,12 @@ export class PProfileComponent implements  OnInit {
   env = environment;
   viewCmaDetails = false;
   selectedCam: Camera;
+  selectedLens: Lens;
+  viewlens: boolean;
   send: string = 'http://169.254.137.164/api/profile/profilePicture/' + this.at.currentUser.email;
   selectedFile: File = null;
   ngOnInit(): void {
-    this.es.getprev(this.route.snapshot.params['id']).subscribe(priv => this.privilege = priv);
+    this.es.getprev(this.route.snapshot.params['id']).subscribe(priv => { this.privilege = priv ;
     if (this.privilege === 1) {
       this.es.getphotographer(this.route.snapshot.params['id'] ).subscribe((ph: Photographer) => {
         this.owner1 = ph ;
@@ -60,6 +63,7 @@ export class PProfileComponent implements  OnInit {
       } else if (this.privilege === 2 ) {
         this._route.navigate(['/stats']);
       }
+    });
       this.getFollowStatus();
       if ( this.at.currentUser.email === this.route.snapshot.params['id']) {
         this.edit = true;
@@ -170,5 +174,12 @@ export class PProfileComponent implements  OnInit {
   viewDetails(cam: Camera) {
     this.viewCmaDetails = true;
     this.selectedCam = cam;
+  }
+  viewlensDetails(len: Lens) {
+    this.viewlens = true;
+    this.selectedLens = len;
+  }
+  selectCam(cam: Camera) {
+    this.es.selectCam(this.at.currentUser.email, cam.cameraName ).subscribe();
   }
 }

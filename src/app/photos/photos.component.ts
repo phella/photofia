@@ -1,4 +1,4 @@
-import { Component,  Input, SimpleChanges, TemplateRef, OnInit, OnChanges } from '@angular/core';
+import { Component,  Input, SimpleChanges, TemplateRef, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import {Images} from '../models/Images.model';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -6,12 +6,13 @@ import {EventsService} from '../services/events.service';
 import {ActivatedRoute} from '@angular/router';
 import { AuthencationService } from '../authencation.service';
 import { Review } from '../models/review.model';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-photos',
   templateUrl: './photos.component.html',
   styleUrls: ['./photos.component.css']
 })
-export class PhotosComponent implements OnInit {
+export class PhotosComponent implements OnInit, OnDestroy {
 
   // tslint:disable-next-line:max-line-length
   constructor(private modalService: BsModalService, private es: EventsService, private route: ActivatedRoute, private at: AuthencationService) { }
@@ -30,6 +31,7 @@ export class PhotosComponent implements OnInit {
   uploadPage = false;
   uploadButton = 'upload photo';
   owner = false;
+  sub: Subscription;
   ngOnInit() {
     if ( this.at.currentUser.email === this.route.snapshot.params['id']) {
       this.owner = true;
@@ -40,6 +42,9 @@ export class PhotosComponent implements OnInit {
       place => {this.places = place; }
     );
 }
+  ngOnDestroy() {
+    clearInterval(this.interval);
+  }
   openModal(template: TemplateRef<any>, path: string) {
     this.path = path;
     this.modalRef = this.modalService.show(template);
@@ -52,6 +57,7 @@ export class PhotosComponent implements OnInit {
     );
   }
   respond() {
+    this.sub =
     this.es.getImagesPhotographer(this.route.snapshot.params['id'], this.at.currentUser.email, this.orderBy , this.pageNumber).subscribe(
       images => this.images = images
     );
