@@ -149,8 +149,7 @@ export class EventsService {
       return this.http.post(this.base + 'images/updateReview/' + currentUser + '/' + path, rev , options);
     }
     getCharts(): Observable<Charts[]> {
-      const options = {headers: new HttpHeaders({ responseType: 'text' })};
-      return this.http.get<Charts[]>(this.base + 'statistics/eventsPlaces' , options);
+      return this.http.get<Charts[]>(this.base + 'statistics/eventsPlaces');
     }
     getAllCams(): Observable<Camera[]> {
       return this.http.get<Camera[]>(this.base + 'getAllCameras');
