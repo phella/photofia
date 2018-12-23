@@ -10,14 +10,6 @@
               First name is required.
             </div>
         <div class="row">
-            <div class="col-lg-6 ">
-                <input #email="ngModel" type="email" class="form-control" name="userEmanil" placeholder="User email"  required [(ngModel)]="model.userEmail">
-            </div>
-            <div *ngIf="email.invalid && email.dirty " class="alert alert-danger col-lg-4 ">
-                    email is required.
-                  </div>
-        </div>
-        <div class="row">
             <div class=" col-lg-4 ">
                 <input #phone="ngModel"type="number" class="form-control" name="phoneNumber" placeholder="01********"  required [(ngModel)]="model.userPhone">
             </div>

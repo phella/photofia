@@ -21,12 +21,6 @@ export class RateComponent implements OnInit {
     );
   }
   rate() {
-    for
-    ( let i = 0 ; i < 5 ; i++) {
-      if ( this.selected[i] === true) {
-        this.rev.rate = i + 1;
-      }
-    }
     if (this.firstTime === true) {
     this.es.reviewPhotographer(this.route.snapshot.params['id'], this.at.currentUser.email, this.rev ).subscribe();
     } else {
