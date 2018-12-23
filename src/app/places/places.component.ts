@@ -4,6 +4,7 @@ import { EventsService } from '../services/events.service';
 import { environment} from '../../environments/environment';
 import { AuthencationService } from '../authencation.service';
 import { Notifi } from '../models/Notification.model';
+import { CookieService } from 'angular2-cookie';
 
 @Component({
   selector: 'app-places',
@@ -18,7 +19,7 @@ export class PlacesComponent implements OnInit {
   noti1: Notifi[];
   noti2: Notifi[];
   noti3: Notifi[];
-  constructor(private es: EventsService, private at: AuthencationService) { }
+  constructor(private es: EventsService, public at: AuthencationService, private cookie: CookieService ) { }
 
   ngOnInit() {
     this.es.getPlaces().subscribe(
@@ -44,4 +45,8 @@ export class PlacesComponent implements OnInit {
       noti3 => this.noti3 = noti3
     );
   }
+  signout() {
+    this.at.currentUser.email = '';
+    this.cookie.removeAll();
+    }
 }

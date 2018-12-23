@@ -3,6 +3,7 @@ import { EventsService } from '../services/events.service';
 import { AuthencationService } from '../authencation.service';
 import { Gift } from '../models/Gift.model';
 import { Notifi } from '../models/Notification.model';
+import { CookieService } from 'angular2-cookie';
 
 @Component({
   selector: 'app-gift',
@@ -17,7 +18,7 @@ export class GiftComponent implements OnInit, OnChanges {
   noti3: Notifi[];
   selectedGift = new Gift();
   response: string;
-  constructor(private es: EventsService, private at: AuthencationService) { }
+  constructor(private es: EventsService, private at: AuthencationService, private cookie: CookieService ) { }
 
   ngOnInit() {
     this.es.getCustomerPoints(this.at.currentUser.email).subscribe(
@@ -48,4 +49,8 @@ export class GiftComponent implements OnInit, OnChanges {
       noti3 => this.noti3 = noti3
     );
   }
+  signout() {
+    this.at.currentUser.email = '';
+    this.cookie.removeAll();
+    }
 }

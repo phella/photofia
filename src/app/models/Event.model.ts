@@ -1,6 +1,6 @@
 export class Event {
     public id: number;
-    public name: string;
+    public eventName: string;
     public description: string;
     public eventLocation: string;
     public date: Date;
