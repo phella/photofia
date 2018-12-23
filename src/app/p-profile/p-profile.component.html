@@ -118,8 +118,8 @@
 
 
   <app-photos *ngIf ="sessions === 1 && edit2 === false"></app-photos>
-  <app-reserve *ngIf ="sessions === 2 && edit2 === false "></app-reserve>
-  <app-schedule *ngIf ="sessions === 2 && edit2 === false "></app-schedule>
+  <app-reserve *ngIf ="sessions === 2 && edit2 === false && !edit "></app-reserve>
+  <app-schedule *ngIf ="sessions === 2 && edit2 === false && edit "></app-schedule>
   <app-rate *ngIf="edit2 === false && sessions === 3" > </app-rate>
   <app-review *ngIf="edit2 === false && sessions === 4 " > </app-review>
   <app-edit *ngIf="edit2=== true"></app-edit>
