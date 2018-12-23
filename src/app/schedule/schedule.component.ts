@@ -9,6 +9,7 @@ import { AuthencationService } from '../authencation.service';
 })
 export class ScheduleComponent implements OnInit {
   day: string;
+  dayNo: number;
   selectedHour: number[] = new Array(24);
   flag = false;
   counter: number[] = new Array(12);
@@ -26,12 +27,27 @@ export class ScheduleComponent implements OnInit {
     }
   }
   close() {
+    if ( this.day === 'Saturday') {
+      this.dayNo = 0 ;
+    } else if (this.day === 'Sunday') {
+      this.dayNo = 1 ;
+    } else if (this.day === 'Monday') {
+      this.dayNo = 2 ;
+    } else if (this.day === 'Tuesday') {
+      this.dayNo = 3 ;
+    } else if (this.day === 'Wednesday') {
+      this.dayNo = 4 ;
+    } else if (this.day === 'Thursday') {
+      this.dayNo = 5 ;
+    } else if (this.day === 'Friday') {
+      this.dayNo = 6 ;
+    }
+    this.es.setSchedule(this.at.currentUser.email, this.dayNo , this.selectedHour).subscribe( );
     if ( this.day === 'Friday') {
       this.day = 'Saturday';
     } else {
       this.day = 'Friday' ;
     }
-    this.es.setSchedule(this.at.currentUser.email, this.day , this.selectedHour).subscribe( );
   }
   deleteAdd(i: number ) {
     for ( const num of this.selectedHour) {
