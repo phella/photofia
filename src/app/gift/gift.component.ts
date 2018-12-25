@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { EventsService } from '../services/events.service';
 import { AuthencationService } from '../authencation.service';
 import { Gift } from '../models/Gift.model';
@@ -10,28 +10,36 @@ import { CookieService } from 'angular2-cookie';
   templateUrl: './gift.component.html',
   styleUrls: ['./gift.component.css']
 })
-export class GiftComponent implements OnInit, OnChanges {
+export class GiftComponent implements OnInit, OnDestroy {
   points: number;
   gifts: Gift[];
   noti1: Notifi[];
   noti2: Notifi[];
   noti3: Notifi[];
+  interval: any;
+  giftPoints: number;
+  giftName: string;
   selectedGift = new Gift();
   response: string;
+  priv: number;
+  selectedEmail: string;
   constructor(private es: EventsService, private at: AuthencationService, private cookie: CookieService ) { }
 
   ngOnInit() {
-    this.es.getCustomerPoints(this.at.currentUser.email).subscribe(
-      point => {this.points = point ; }
-    );
+    this.getcustomerpoints();
+    this.interval = setInterval(() => { this.getcustomerpoints(); }, 1000);
     this.es.getGifts().subscribe(
       Gif => {this.gifts = Gif ; }
     );
+    this.es.getprev(this.at.currentUser.email).subscribe(prev => {this.priv = prev ; });
   }
-  ngOnChanges() {
+  getcustomerpoints() {
     this.es.getCustomerPoints(this.at.currentUser.email).subscribe(
       point => {this.points = point ; }
     );
+  }
+  ngOnDestroy() {
+    clearInterval(this.interval);
   }
   redeem() {
     this.es.redeem(this.at.currentUser.email, this.selectedGift ).subscribe(
@@ -52,5 +60,11 @@ export class GiftComponent implements OnInit, OnChanges {
   signout() {
     this.at.currentUser.email = '';
     this.cookie.removeAll();
+    }
+    promote() {
+      this.es.promote(this.selectedEmail).subscribe();
+    }
+    addGift( ) {
+      this.es.addGift(this.giftName, this.giftPoints).subscribe();
     }
 }

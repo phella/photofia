@@ -9,13 +9,14 @@ import { Charts } from '../models/Charts.model';
 })
 export class StatisticsComponent implements OnInit {
   citiesNumbers: number[];
+  cities: Charts[];
   public lineChartData: Array<any> = [
     {data: this.citiesNumbers, label: 'events / place'},
     {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
     {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
   ];
-  cities: Charts[];
   citiesNames: string[];
+  prev: number;
   public lineChartLabels: string[] = this.citiesNames ;
   public lineChartOptions: any = {
     responsive: true
@@ -71,11 +72,11 @@ export class StatisticsComponent implements OnInit {
   }
   ngOnInit() {
     this.es.getCharts().subscribe(cit => {this.cities = cit; } );
-    for (let i = 0 ; i < this.cities.length ; i++) {
+    /*for (let i = 0 ; i < this.cities.length ; i++) {
       this.citiesNames[i] = this.cities[i].placeName;
       this.citiesNumbers[i] = this.cities[i].eventsNumber;
-    }
-    this.lineChartLabels = this.citiesNames;
+    }*/
+    // this.lineChartLabels = this.citiesNames;
   }
 }
 

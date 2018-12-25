@@ -9,6 +9,7 @@ import { ReserveComponent } from './reserve/reserve.component';
 import { PlacesComponent } from './places/places.component';
 import { GiftComponent } from './gift/gift.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { DeviceComponent } from './device/device.component';
 export const routes: Routes = [
 {path: 'sign' , component : SignComponent},
 {path: 'home' , component: HomeComponent, canActivate : [AuthencationService]},
@@ -19,5 +20,6 @@ export const routes: Routes = [
 {path: 'cities', component: PlacesComponent},
 {path: 'gifts', component: GiftComponent},
 {path: 'stats', component: StatisticsComponent},
+{path: 'device', component: DeviceComponent},
 {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];

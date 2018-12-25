@@ -19,12 +19,16 @@ export class PlacesComponent implements OnInit {
   noti1: Notifi[];
   noti2: Notifi[];
   noti3: Notifi[];
+  priv: number;
+  addPlace = new Place();
+  clicked = false;
   constructor(private es: EventsService, public at: AuthencationService, private cookie: CookieService ) { }
 
   ngOnInit() {
     this.es.getPlaces().subscribe(
       cit => { this.places = cit ; }
     );
+    this.es.getprev( this.at.currentUser.email ).subscribe( prev => {this.priv = prev ; } );
   }
   toggleDetails(_place: Place) {
     if (this.allPlaces === true) {
@@ -49,4 +53,8 @@ export class PlacesComponent implements OnInit {
     this.at.currentUser.email = '';
     this.cookie.removeAll();
     }
+  add() {
+    this.es.addNewPlace(this.addPlace).subscribe();
+    this.clicked = true;
+  }
 }

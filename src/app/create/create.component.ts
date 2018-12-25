@@ -18,7 +18,7 @@ export class CreateComponent implements OnInit {
   cities: string[];
   submitForm() {
     this.es.saveform(this.model).subscribe(() => {
-     this.router.navigate(['/home']);
+     this.router.navigate(['/sign']);
     });
   }
   ngOnInit() {

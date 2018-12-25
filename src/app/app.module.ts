@@ -30,6 +30,7 @@ import {CookieService } from 'angular2-cookie/services/cookies.service';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ChartsModule } from 'ng2-charts';
 import { ScheduleComponent } from './schedule/schedule.component';
+import { DeviceComponent } from './device/device.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { ScheduleComponent } from './schedule/schedule.component';
     ReviewComponent,
     GiftComponent,
     StatisticsComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    DeviceComponent
   ],
   imports: [
     BrowserModule,

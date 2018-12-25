@@ -17,7 +17,7 @@ export class PhotosComponent implements OnInit, OnDestroy {
   // tslint:disable-next-line:max-line-length
   constructor(private modalService: BsModalService, private es: EventsService, private route: ActivatedRoute, private at: AuthencationService) { }
   modalRef: BsModalRef;
-  base = 'http://192.168.1.100/images/' ;
+  base = 'http://169.254.137.164/images/' ;
   pageNumber = 1;
   orderBy = '/time/';
   images: Images[] = [  ];

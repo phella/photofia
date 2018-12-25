@@ -19,7 +19,7 @@
             <a class="nav-link" href="#" [routerLink]="['/cities']">places</a>
           </li>
           <li class="nav-item active">
-              <a class="nav-link" href="#" [routerLink]="['/gifts']">Gifts</a>
+              <a class="nav-link" href="#"  [routerLink]="['/gifts']">Gifts</a>
             </li>
       <li class="nav-item dropdown ">
         <a (click)="getNotification()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,7 +46,7 @@
 
 
 
-<div class="container">
+<div class="container" *ngIf="priv !== 2">
   <br>
   <h1>your points:{{points}}</h1>
   <br>
@@ -57,3 +57,16 @@
 <button (click)=" redeem()" class="btn btn-primary">redeem</button>
 {{response}}
 </div>
+
+<div class="container" *ngIf="priv ===2" >
+ <h1> Promote users to admin : </h1>
+ <input type="text" name="email" [(ngModel)]="selectedEmail">
+ <button class="btn btn-primary" (click)="promote()"> promote</button>
+</div>
+
+<div class="container" *ngIf="priv ===2" >
+  <h1> addGifts : </h1>
+  <input type="text" name="email" [(ngModel)]="GiftName">
+  <input type="number" name="gift" [(ngModel)]="giftPoints">
+  <button class="btn btn-primary" (click)="addGift()"> Add</button>
+ </div>

@@ -26,7 +26,7 @@ export class PProfileComponent implements  OnInit {
   owner0 = new  Customer();
   follow: number ;
   lenses: Lens[];
-  base = ' photophia/api/images/' ;
+  base = 'http://169.254.137.164/images/' ;
   noti1: Notifi[];
   noti2: Notifi[];
   noti3: Notifi[];

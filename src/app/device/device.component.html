@@ -1,0 +1,84 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Photofia</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" [routerLink]="['/profile/'+this.at.currentUser.email]"> {{profileString}} </a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#" [routerLink]="['/events']">events</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" [routerLink]="['/cities']">places</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#" [routerLink]="['/gifts']">Gifts</a>
+            </li>
+            <li class="nav-item dropdown ">
+              <a (click)="getNotification()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Notifications
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a *ngFor="let notification1 of noti1" class="dropdown-item"  style="background-color:beige">
+                  {{notification1.username}} applies to your event <button (click)="respondEvent(notification1.id,notification1.userEmail,1)"> yes </button> <button (click)="respondEvent(notification1.id,notification1.userEmail,0)">no</button>
+                </a>
+                <a *ngFor="let notification2 of noti2" class="dropdown-item" href="#" style="background-color:cyan">
+                    {{notification2.username}} reserved 
+                  </a>
+                <a *ngFor="let notification3 of noti3" class="dropdown-item" href="#" style="background-color:red">
+                    {{notification3.username}} followed you
+                </a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link "  href="#" [routerLink]="['/device']"  *ngIf="priv === 2">add devices</a>
+            </li>
+      <li class="nav-item">
+        <a class="nav-link " (click)="signout()" href="#" [routerLink]="['/sign']">sign out</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <h1><b>Insert new camera</b></h1>
+  <input name="c1" class="form-control" [(ngModel)]="addCamera.cameraName" placeholder="cameraName">
+  <input name="c2" class="form-control" [(ngModel)]="addCamera.sensorSize"  placeholder="sensorSize">
+  <input name="c3" class="form-control" [(ngModel)]="addCamera.brand" placeholder="camerabrand">
+  <input name="c4" class="form-control"  [(ngModel)]="addCamera.resolution" placeholder="resolution">
+  <input name="c5" class="form-control" [(ngModel)]="addCamera.videoCaptureResolution" placeholder="videoCaptureResolution">
+  <input name="c6" class="form-control" [ngModel]="addCamera.opticalZoom" placeholder="opticalZoom">
+  <button class="btn btn-primary col-md-12" (click)="insertCamera()">add camera</button>  
+</div>
+
+<div class="container">
+  <h1><b>insert new lens</b></h1>
+  <div class="row">
+  <input name="l1" [(ngModel)]="addLens.lensName" placeholder="lensName" class="form-control">
+  </div>
+  <div class="row">
+  <input name="l2" [(ngModel)]="addLens.lensType" placeholder="lensType" class="form-control">
+  </div>
+  <div class="row">
+  <input class="form-control" name="l3" [(ngModel)]="addLens.focusType" placeholder="focusType">
+  </div>
+  <div class="row">
+  <input name="l4" class="form-control" [(ngModel)]="addLens.minFocalRange" type="number" placeholder="minFocalRange">
+  </div>
+  <div class="row">
+  <input name="l5" class="form-control" [(ngModel)]="addLens.maxFocalRange" type="number" placeholder="maxFocalRange">
+  </div>
+  <div class="row">
+  <input name="l6" class="form-control" [ngModel]="addLens.maxApretureRange" type="numbers" placeholder="maxApretureRange">
+  </div>
+  <div class="row">
+  <button class="btn btn-primary col-md-12" (click)="insertLens()">add lens</button>
+  </div>
+</div>

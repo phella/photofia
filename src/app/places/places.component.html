@@ -42,8 +42,17 @@
   </nav>
 
 
+  <div class="card col-md-10" style="margin-top:20px;" *ngIf="priv === 2">
+    <form #form="ngForm">
+      <input placeholder="placeName" name="placeName" [(ngModel)]="addPlace.placeName">
+      <input placeholder="description" name="description" [(ngModel)]="addPlace.description">
+      <button class="btn btn-success" (click)="add()">submit</button>
+    </form>
+    <h2 *ngIf="clicked"> Place</h2>
+  </div>
 
-<div *ngFor="let _place of places " class="card col-md-10" style="margin-top:20px;" (click)="toggleDetails(_place)">
+
+<div *ngFor="let _place of places " class="card col-md-10" style="margin-top:20px;" (click)="toggleDetails(_place)" >
     <div class="card-body" *ngIf="allPlaces === true">
       <h5 class="card-title"> {{_place.placeName}} </h5>
       <p class="card-text"> {{ _place.description}} </p>

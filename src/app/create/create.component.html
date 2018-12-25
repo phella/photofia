@@ -74,8 +74,8 @@
                       </div>
                     </div>
                 <div class="row">
-                <select class="custom-select col-lg-4" name="city" [(ngModel)]="model.city" placeholder="city">
-                        <option *ngFor="let city of cities"> {{city}} </option>
+                <select class="custom-select col-lg-4" name="city" [(ngModel)]="model.city" placeholder="city" required>   
+                    <option *ngFor="let city of cities"> {{city}} </option>
                 </select>
                 </div>
                 <div class="row">

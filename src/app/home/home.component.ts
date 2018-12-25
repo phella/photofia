@@ -19,8 +19,8 @@ export class HomeComponent implements OnInit {
   noti1: Notifi[];
   noti2: Notifi[];
   noti3: Notifi[];
+  profileString = 'profile';
   base = 'http://localhost/images/';
-  adminStats = 'profile';
   constructor(public at: AuthencationService, private es: EventsService, private route: ActivatedRoute, private cookie: CookieService) { }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     );
     this.es.getprev(this.route.snapshot.params['id']).subscribe(priv => this.privilege = priv);
     if ( this.privilege === 2) {
-      this.adminStats = 'stats';
+      this.profileString = 'statistics' ;
     }
   }
   signout() {

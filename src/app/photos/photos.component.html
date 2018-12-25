@@ -61,7 +61,7 @@
         <div class="work" style="margin-top:20px;" *ngIf="uploadPage">
           <form #form [action]="'http://192.168.1.100/api/images/upload/' + at.currentUser.email" method='post' enctype="multipart/form-data">
             <input type="file" name="image" class="row" style="margin-bottom: 60px;margin-left: 30px;">
-            image nme:<input type="text" name="type" class="row" style="margin-bottom: 60px;margin-left: 30px;">
+            image name:<input type="text" name="type" class="row" style="margin-bottom: 60px;margin-left: 30px;">
             description:<input type="text" name="description" class="row" style="margin-bottom: 60px;margin-left: 30px;">
             <select name="imageLocation" style="margin-bottom: 60px;margin-left: 30px;">
               <option *ngFor="let place of places" >{{place}}</option>

@@ -17,9 +17,9 @@ import { Charts } from '../models/Charts.model';
   providedIn: 'root'
 })
 export class EventsService {
-   // private base = 'http://169.254.137.164/api/';
+    private base = 'http://169.254.137.164/api/';
 
-   private base = 'http://localhost/api/';
+  // private base = 'http://localhost/api/';
   // private base = 'http://192.168.137.1:8080/photofia-database-project/public/api/';
   constructor(private http: HttpClient) {
    }
@@ -166,5 +166,23 @@ export class EventsService {
     setSchedule( id: string, day: number, hours: number[] ) {
       const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
       return this.http.post(this.base + 'photographer/schedule/' + id + '/' + day , hours , options);
+    }
+    addNewPlace(place: Place) {
+      const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
+      return this.http.post(this.base, place, options);
+    }
+    promote(id: string) {
+      return this.http.get(this.base + id);
+    }
+    addGift(giftName: string, giftPoints: number ) {
+      return this.http.get(this.base + giftName + '/' + giftPoints);
+    }
+    insertCamera(camera: Camera) {
+      const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
+      return this.http.post(this.base + 'camera/insert' , camera , options);
+    }
+    insertLens(lens: Lens) {
+      const options = {headers: new HttpHeaders({'Content-Type':  'application/json'})};
+      return this.http.post(this.base + 'insertLens' , lens , options);
     }
   }
