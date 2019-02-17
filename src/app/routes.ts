@@ -10,11 +10,12 @@ import { PlacesComponent } from './places/places.component';
 import { GiftComponent } from './gift/gift.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { DeviceComponent } from './device/device.component';
+import { ProfileResolverService } from './profile-resolver.service';
 export const routes: Routes = [
 {path: 'sign' , component : SignComponent},
 {path: 'home' , component: HomeComponent, canActivate : [AuthencationService]},
 {path: 'create', component: CreateComponent},
-{path: 'profile/:id', component: PProfileComponent},
+{path: 'profile/:id', component: PProfileComponent, resolve: {privilege: ProfileResolverService}},
 {path: 'events', component: EventsComponent},
 {path: 'reserve', component: ReserveComponent},
 {path: 'cities', component: PlacesComponent},

@@ -48,7 +48,7 @@ export class PProfileComponent implements  OnInit {
   send: string = 'http://169.254.137.164/api/profile/profilePicture/' + this.at.currentUser.email;
   selectedFile: File = null;
   ngOnInit(): void {
-    this.es.getprev(this.route.snapshot.params['id']).subscribe(priv => { this.privilege = priv ;
+    this.privilege = this.route.snapshot.data['privilege'];
     if (this.privilege === 1) {
       this.es.getphotographer(this.route.snapshot.params['id'] ).subscribe((ph: Photographer) => {
         this.owner1 = ph ;
@@ -63,7 +63,6 @@ export class PProfileComponent implements  OnInit {
       } else if (this.privilege === 2 ) {
         this._route.navigate(['/stats']);
       }
-    });
       this.getFollowStatus();
       if ( this.at.currentUser.email === this.route.snapshot.params['id']) {
         this.edit = true;
