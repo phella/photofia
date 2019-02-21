@@ -11,7 +11,6 @@ import { Camera } from '../models/camera.model';
 import { Review } from '../models/review.model';
 import { Lens } from '../models/lens.model';
 import { Gift } from '../models/Gift.model';
-import { Options } from 'selenium-webdriver';
 import { Charts } from '../models/Charts.model';
 @Injectable({
   providedIn: 'root'
