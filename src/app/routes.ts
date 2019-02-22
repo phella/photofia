@@ -11,6 +11,7 @@ import { GiftComponent } from './gift/gift.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { DeviceComponent } from './device/device.component';
 import { ProfileResolverService } from './profile-resolver.service';
+import { AdminGuard } from './admin.guard';
 export const routes: Routes = [
 {path: 'sign' , component : SignComponent},
 {path: 'home' , component: HomeComponent, canActivate : [AuthencationService]},
@@ -20,7 +21,7 @@ export const routes: Routes = [
 {path: 'reserve', component: ReserveComponent},
 {path: 'cities', component: PlacesComponent},
 {path: 'gifts', component: GiftComponent},
-{path: 'stats', component: StatisticsComponent},
+{path: 'stats', component: StatisticsComponent , canActivate : [AdminGuard]},
 {path: 'device', component: DeviceComponent},
 {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
