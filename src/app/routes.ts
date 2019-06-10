@@ -8,7 +8,6 @@ import { EventsComponent } from './events/events.component';
 import { ReserveComponent } from './reserve/reserve.component';
 import { PlacesComponent } from './places/places.component';
 import { GiftComponent } from './gift/gift.component';
-import { StatisticsComponent } from './statistics/statistics.component';
 import { DeviceComponent } from './device/device.component';
 import { ProfileResolverService } from './profile-resolver.service';
 import { AdminGuard } from './admin.guard';
@@ -21,7 +20,6 @@ export const routes: Routes = [
 {path: 'reserve', component: ReserveComponent},
 {path: 'cities', component: PlacesComponent},
 {path: 'gifts', component: GiftComponent},
-{path: 'stats', component: StatisticsComponent , canActivate : [AdminGuard]},
 {path: 'device', component: DeviceComponent},
 {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
