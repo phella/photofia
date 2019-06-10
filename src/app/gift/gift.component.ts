@@ -3,7 +3,6 @@ import { EventsService } from '../services/events.service';
 import { AuthencationService } from '../authencation.service';
 import { Gift } from '../models/Gift.model';
 import { Notifi } from '../models/Notification.model';
-import { CookieService } from 'angular2-cookie';
 
 @Component({
   selector: 'app-gift',
@@ -23,7 +22,7 @@ export class GiftComponent implements OnInit, OnDestroy {
   response: string;
   priv: number;
   selectedEmail: string;
-  constructor(private es: EventsService, private at: AuthencationService, private cookie: CookieService ) { }
+  constructor(private es: EventsService, private at: AuthencationService) { }
 
   ngOnInit() {
     this.getcustomerpoints();
@@ -59,7 +58,6 @@ export class GiftComponent implements OnInit, OnDestroy {
   }
   signout() {
     this.at.currentUser.email = '';
-    this.cookie.removeAll();
     }
     promote() {
       this.es.promote(this.selectedEmail).subscribe();

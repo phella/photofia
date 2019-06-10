@@ -3,7 +3,6 @@ import { AuthencationService } from '../authencation.service';
 import { EventsService } from '../services/events.service';
 import { Images } from '../models/Images.model';
 import { ActivatedRoute } from '@angular/router';
-import { CookieService } from 'angular2-cookie';
 import { Notifi } from '../models/Notification.model';
 
 
@@ -21,7 +20,7 @@ export class HomeComponent implements OnInit {
   noti3: Notifi[];
   profileString = 'profile';
   base = 'http://localhost/images/';
-  constructor(public at: AuthencationService, private es: EventsService, private route: ActivatedRoute, private cookie: CookieService) { }
+  constructor(public at: AuthencationService, private es: EventsService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.es.getPhotosHome(this.at.currentUser.email).subscribe(
@@ -34,7 +33,6 @@ export class HomeComponent implements OnInit {
   }
   signout() {
   this.at.currentUser.email = '';
-  this.cookie.removeAll();
   }
   getNotification() {
     this.es.customerReserve(this.at.currentUser.email).subscribe(

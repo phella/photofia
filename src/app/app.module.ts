@@ -19,9 +19,7 @@ import { PlacesComponent } from './places/places.component';
 import { PlaceDetailsComponent } from './place-details/place-details.component';
 import { DatePipe } from '@angular/common';
 import { GiftComponent } from './gift/gift.component';
-import {CookieService } from 'angular2-cookie/services/cookies.service';
 import { StatisticsComponent } from './statistics/statistics.component';
-import { ChartsModule } from 'ng2-charts';
 import { DeviceComponent } from './device/device.component';
 import { ProfileModule } from './profile/profile.module';
 @NgModule({
@@ -47,13 +45,11 @@ import { ProfileModule } from './profile/profile.module';
     HttpClientModule,
     ModalModule.forRoot(),
     TimepickerModule.forRoot(),
-    ChartsModule,
     ProfileModule
   ],
   providers: [
     AuthencationService,
     DatePipe,
-    CookieService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CookieService } from 'angular2-cookie';
 import { AuthencationService } from '../authencation.service';
 import { EventsService } from '../services/events.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,14 +14,13 @@ export class DeviceComponent implements OnInit {
   privilege: number;
   addCamera = new Camera();
   addLens = new Lens();
-  constructor(public cookie: CookieService, public at: AuthencationService , public es: EventsService, public route: ActivatedRoute) { }
+  constructor( public at: AuthencationService , public es: EventsService, public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.es.getprev(this.route.snapshot.params['id']).subscribe(priv => this.privilege = priv);
   }
   signout() {
     this.at.currentUser.email = '';
-    this.cookie.removeAll();
     }
     insertLens() {
       this.es.insertLens(this.addLens).subscribe();

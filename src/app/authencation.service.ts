@@ -5,7 +5,6 @@ import { User } from './models/user.model';
 import {tap, catchError} from 'rxjs/operators';
 import { of } from 'rxjs';
 import { environment } from '../environments/environment';
-import { CookieService } from 'angular2-cookie';
 import { LogIn } from './models/logIn.model';
 
 @Injectable({
@@ -18,9 +17,8 @@ export class AuthencationService implements CanActivate {
   env = environment;
   prev = 1; // 1 for photographer
   private base = 'http://169.254.137.164/api/';
-  constructor(private router: Router, private http: HttpClient, private cookie: CookieService) {
+  constructor(private router: Router, private http: HttpClient) {
     this.is_Auth = true;
-    this.currentUser.email = this.cookie.get('email');
    }
   canActivate()  {
     if (!this.is_Auth) {
