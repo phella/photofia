@@ -17,7 +17,7 @@ import { environment } from '../../environments/environment';
 })
 export class PProfileComponent implements  OnInit {
   // tslint:disable-next-line:max-line-length
-  constructor(private modalService: BsModalService, private es: EventsService, private route: ActivatedRoute, private at: AuthencationService, private cookie: CookieService, private _route: Router ) {
+  constructor(private modalService: BsModalService, private es: EventsService, private route: ActivatedRoute, private at: AuthencationService, private _route: Router ) {
   }
   modalRef: BsModalRef;
   bd = new Date('jan 1 2017');
@@ -167,7 +167,6 @@ export class PProfileComponent implements  OnInit {
   }
   signout() {
     this.at.currentUser.email = '';
-    this.cookie.removeAll();
     }
   viewDetails(cam: Camera) {
     this.viewCmaDetails = true;

@@ -21,7 +21,7 @@ export class PlacesComponent implements OnInit {
   priv: number;
   addPlace = new Place();
   clicked = false;
-  constructor(private es: EventsService, public at: AuthencationService, private cookie: CookieService ) { }
+  constructor(private es: EventsService, public at: AuthencationService ) { }
 
   ngOnInit() {
     this.es.getPlaces().subscribe(
@@ -50,7 +50,6 @@ export class PlacesComponent implements OnInit {
   }
   signout() {
     this.at.currentUser.email = '';
-    this.cookie.removeAll();
     }
   add() {
     this.es.addNewPlace(this.addPlace).subscribe();

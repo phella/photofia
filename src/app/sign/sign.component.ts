@@ -12,14 +12,13 @@ export class SignComponent  {
   login = new LogIn('', '');
   invalid = false;
   env = environment;
-  constructor(private as: AuthencationService, private route: Router, private cookie: CookieService) {
+  constructor(private as: AuthencationService, private route: Router) {
    }
   signin() {
     this.as.login(this.login).subscribe(resp => {
       if (resp === null) {
         this.invalid = true;
       } else {
-      this.cookie.put('email', this.login.userEmail );
       this.as.currentUser.email = this.login.userEmail;
       this.route.navigate(['home']);
       }

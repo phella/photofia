@@ -17,7 +17,7 @@ export class EventsComponent implements OnInit {
   noti2: Notifi[];
   noti3: Notifi[];
   view = 1;
-  constructor(private es: EventsService, public at: AuthencationService, private cookie: CookieService) {
+  constructor(private es: EventsService, public at: AuthencationService) {
    }
 
   ngOnInit() {
@@ -52,6 +52,5 @@ export class EventsComponent implements OnInit {
   }
   signout() {
     this.at.currentUser.email = '';
-    this.cookie.removeAll();
     }
 }
