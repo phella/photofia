@@ -4,7 +4,6 @@ import { EventsService } from '../services/events.service';
 import { environment} from '../../environments/environment';
 import { AuthencationService } from '../authencation.service';
 import { Notifi } from '../models/Notification.model';
-import { CookieService } from 'angular2-cookie';
 
 @Component({
   selector: 'app-places',

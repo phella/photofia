@@ -3,7 +3,6 @@ import { AuthencationService } from '../authencation.service';
 import { Router } from '@angular/router';
 import { LogIn } from '../models/logIn.model';
 import { environment } from '../../environments/environment';
-import {CookieService } from 'angular2-cookie/core';
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.component.html',

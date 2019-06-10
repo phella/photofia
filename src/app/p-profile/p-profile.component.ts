@@ -10,7 +10,6 @@ import { Notifi } from '../models/Notification.model';
 import { Lens } from '../models/lens.model';
 import { Camera } from '../models/camera.model';
 import { environment } from '../../environments/environment';
-import { CookieService } from 'angular2-cookie';
 @Component({
   selector: 'app-p-profile',
   templateUrl: './p-profile.component.html',

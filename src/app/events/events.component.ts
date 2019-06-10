@@ -5,7 +5,6 @@ import { DATE } from 'ngx-bootstrap/chronos/units/constants';
 import { EventsService } from '../services/events.service';
 import { AuthencationService } from '../authencation.service';
 import { Notifi } from '../models/Notification.model';
-import { CookieService } from 'angular2-cookie';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
